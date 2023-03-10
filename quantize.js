@@ -1,5 +1,6 @@
 import quantize from "quantize";
-import { getPixelsAsync, rgbToHex } from "./util.js";
+import { getPixelsAsync } from "./util/pixels.js";
+import { rgbToHex } from "./util/color.js";
 
 export async function reduceColors(imageUrl, numColors) {
   const pixels = await getPixelsAsync(imageUrl);

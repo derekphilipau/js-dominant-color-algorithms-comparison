@@ -1,6 +1,7 @@
 import quantize from "quantize";
-import { getPixelsAsync, rgbToHsl, rgbToHex } from "./util.js";
 import { getDominantColors } from "./dominant.js";
+import { getPixelsAsync } from "./util/pixels.js";
+import { rgbToHsl, hslToHex } from "./util/color.js";
 
 export async function getDominantReducedColors(
   imageUrl,

@@ -1,17 +1,3 @@
-import getPixels from "get-pixels";
-
-export async function getPixelsAsync(imageUrl) {
-  return new Promise((resolve, reject) => {
-    getPixels(imageUrl, (err, pixels) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(pixels);
-      }
-    });
-  });
-}
-
 export function rgbToHsl(rgb) {
   const { r, g, b } = rgb;
   const r1 = r / 255;

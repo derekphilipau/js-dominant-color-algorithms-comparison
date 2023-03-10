@@ -1,5 +1,6 @@
 import { kmeans } from "ml-kmeans";
-import { getPixelsAsync, rgbToHsl, hslToHex } from "./util.js";
+import { getPixelsAsync } from "./util/pixels.js";
+import { rgbToHsl, hslToHex } from "./util/color.js";
 
 export async function getDominantColors(
   imageUrl,

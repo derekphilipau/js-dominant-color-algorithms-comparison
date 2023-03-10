@@ -26,6 +26,11 @@ async function generateColorPalette(imageUrls, numColors) {
     const dominantReducedColors = await getDominantReducedColors(
       imageUrl,
       numColors,
+      false
+    );
+    const dominantReducedColorsWeighted = await getDominantReducedColors(
+      imageUrl,
+      numColors,
       true
     );
 
@@ -34,6 +39,7 @@ async function generateColorPalette(imageUrls, numColors) {
       { name: "Dominant Colors Weighted", colors: dominantColorsWeighted },
       { name: "Reduced Colors", colors: reducedColors },
       { name: "Dominant Reduced Colors", colors: dominantReducedColors },
+      { name: "Dominant Reduced Colors Weighted", colors: dominantReducedColorsWeighted },
     ];
 
     const imageHtml = `

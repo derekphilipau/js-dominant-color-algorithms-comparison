@@ -17,6 +17,7 @@
     "ml-kmeans": "^6.0.0",
     "ml-matrix": "^6.10.4",
     "node-kmeans": "^1.1.9",
-    "quantize": "^1.0.2"
+    "quantize": "^1.0.2",
+    "save-pixels": "^2.3.6"
   }
 }
