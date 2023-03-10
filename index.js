@@ -1,6 +1,6 @@
 import { generateHtml } from "./src/util/generateHtml.js";
 
-const imagesx = [
+const images = [
   {
     filename: "2018.1_DM.13156.jpg",
     title: "Lot 043017 (Multiflora, Radiant Blue)",
@@ -90,7 +90,7 @@ const imagesx = [
   },
 ];
 
-const images = [
+const imagesx = [
   {
     filename: "2018.1_DM.13156.jpg",
     title: "Lot 043017 (Multiflora, Radiant Blue)",

@@ -3,6 +3,7 @@ import {
   getPixelsAsync,
   getSampledPixelsAsync,
   getHslDataArray,
+  saveImage,
 } from "./util/pixels.js";
 import { rgbToHsl, hslToHex } from "./util/color.js";
 
@@ -48,6 +49,13 @@ async function process(
   const pixels = isSampled
     ? await getSampledPixelsAsync(imageUrlOrPath)
     : await getPixelsAsync(imageUrlOrPath);
+
+  /*
+  let fileExt = ".png";
+  if (useWeighted) fileExt = "_weighted" + fileExt;
+  if (isSampled) fileExt = "_sampled" + fileExt;
+  await saveImage(pixels, imageUrlOrPath + fileExt);
+  */
 
   if (dataArray.length === 0) {
     dataArray = getHslDataArray(pixels);

@@ -74,19 +74,7 @@ export function getHslDataArray(pixels) {
   return dataArray;
 }
 
-/*
-// Example usage:
-getPixels("input.png", function(err, pixels) {
-  // Modify the pixel data here
-  // ...
-
-  // Save the modified pixel data to a new file
-  await saveImage(pixels, pixels.shape[0], pixels.shape[1], 'output.png');
-});
-*/
-export async function saveImage(pixels, width, height, filename) {
-  width = width || pixels.shape[0];
-  height = height || pixels.shape[1];
+export async function saveImage(pixels, filename) {
   return new Promise((resolve, reject) => {
     const stream = fs.createWriteStream(filename);
     stream.on("finish", () => {
