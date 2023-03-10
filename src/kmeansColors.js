@@ -2,12 +2,19 @@ import { kmeans } from "ml-kmeans";
 import { getPixelsAsync } from "./util/pixels.js";
 import { rgbToHsl, hslToHex } from "./util/color.js";
 
-export async function getDominantColors(
+export async function getKmeansWeightedColors(
   imageUrl,
   numClusters,
-  useWeighted,
   dataArray = []
 ) {
+  return process(imageUrl, numClusters, true, dataArray);
+}
+
+export async function getKmeansColors(imageUrl, numClusters, dataArray = []) {
+  return process(imageUrl, numClusters, false, dataArray);
+}
+
+async function process(imageUrl, numClusters, useWeighted, dataArray = []) {
   const pixels = await getPixelsAsync(imageUrl);
 
   if (dataArray.length === 0) {

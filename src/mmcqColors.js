@@ -1,8 +1,16 @@
+/**
+ * Use quantize npm package: https://www.npmjs.com/package/quantize
+ * Basic Javascript port of the MMCQ (modified median cut quantization)
+ * algorithm from the Leptonica library (http://www.leptonica.com/).
+ * Returns a color map you can use to map original pixels to the reduced
+ * palette. Still a work in progress.
+ * http://www.leptonica.org/color-quantization.html
+ */
 import quantize from "quantize";
 import { getPixelsAsync } from "./util/pixels.js";
 import { rgbToHex } from "./util/color.js";
 
-export async function reduceColors(imageUrl, numColors) {
+export async function modifiedMedianCutQuantization(imageUrl, numColors) {
   const pixels = await getPixelsAsync(imageUrl);
 
   const dataArray = [];

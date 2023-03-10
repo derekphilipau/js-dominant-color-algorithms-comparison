@@ -1,13 +1,17 @@
 import quantize from "quantize";
-import { getDominantColors } from "./dominant.js";
+import { getKmeansColors, getKmeansWeightedColors } from "./kmeansColors.js";
 import { getPixelsAsync } from "./util/pixels.js";
 import { rgbToHsl, hslToHex } from "./util/color.js";
 
-export async function getDominantReducedColors(
-  imageUrl,
-  numColors,
-  useWeighted = false
-) {
+export async function getMmcqKmeansColors(imageUrl, numColors) {
+  return process(imageUrl, numColors, false);
+}
+
+export async function getMmcqKmeansWeightedColors(imageUrl, numColors) {
+  return process(imageUrl, numColors, true);
+}
+
+export async function process(imageUrl, numColors, useWeighted = false) {
   const maximumColorCount = 255;
   const pixels = await getPixelsAsync(imageUrl);
 
@@ -42,5 +46,7 @@ export async function getDominantReducedColors(
     reducedArray.push(row);
   }
 
-  return getDominantColors(imageUrl, numColors, useWeighted, reducedArray);
+  if (useWeighted)
+    return getKmeansWeightedColors(imageUrl, numColors, reducedArray);
+  return getKmeansColors(imageUrl, numColors, reducedArray);
 }
