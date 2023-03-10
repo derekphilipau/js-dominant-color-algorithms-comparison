@@ -1,45 +1,59 @@
 import { writeFileSync } from "fs";
-import { getKmeansColors, getKmeansWeightedColors } from "../kmeansColors.js";
+import {
+  getKmeansColors,
+  getKmeansSampledColors,
+  getKmeansSampledWeightedColors,
+  getKmeansWeightedColors,
+} from "../kmeansColors.js";
 import { modifiedMedianCutQuantization } from "../mmcqColors.js";
 import {
   getMmcqKmeansColors,
   getMmcqKmeansWeightedColors,
 } from "../mmcqKmeansColors.js";
 
-export async function generateHtml(imageUrls, numColors) {
-  const imageDivs = [];
-  for (const imageUrl of imageUrls) {
-    const kmeansColors = await getKmeansColors(imageUrl, numColors);
-    const kmeansWeightedColors = await getKmeansWeightedColors(
-      imageUrl,
-      numColors
-    );
-    const mmcqColors = await modifiedMedianCutQuantization(imageUrl, numColors);
-    const mmcqKmeansColors = await getMmcqKmeansColors(imageUrl, numColors);
-    const mmcqKmeansWeightedColors = await getMmcqKmeansWeightedColors(
-      imageUrl,
-      numColors
-    );
+async function getPalettes(imageFile, numColors) {
+  const kmeansColors = await getKmeansColors(imageFile, numColors);
+  const kmeansWeightedColors = await getKmeansWeightedColors(
+    imageFile,
+    numColors
+  );
+  const mmcqColors = await modifiedMedianCutQuantization(imageFile, numColors);
+  const mmcqKmeansColors = await getMmcqKmeansColors(imageFile, numColors);
+  const mmcqKmeansWeightedColors = await getMmcqKmeansWeightedColors(
+    imageFile,
+    numColors
+  );
 
-    const palettes = [
-      { name: "K-means Colors", colors: kmeansColors },
-      { name: "K-means Weighted Colors", colors: kmeansWeightedColors },
-      { name: "MMCQ Colors", colors: mmcqColors },
-      { name: "MMCQ K-means Colors", colors: mmcqKmeansColors },
-      {
-        name: "MMCQ K-means Weighted Colors",
-        colors: mmcqKmeansWeightedColors,
-      },
-    ];
+  return [
+    { name: "K-means Colors", colors: kmeansColors },
+    { name: "K-means Weighted Colors", colors: kmeansWeightedColors },
+    { name: "MMCQ Colors", colors: mmcqColors },
+    { name: "MMCQ K-means Colors", colors: mmcqKmeansColors },
+    {
+      name: "MMCQ K-means Weighted Colors",
+      colors: mmcqKmeansWeightedColors,
+    },
+  ];
+}
+
+export async function generateHtml(images, numColors) {
+  const imageDivs = [];
+  for (const image of images) {
+    const imageFile = `./img/${image.filename}`;
+
+    const palettes = await getPalettes(imageFile, numColors);
 
     const imageHtml = `
       <div class="columns">
-        <div class="column">
+        <div class="column is-one-third">
           <figure class="image">
-            <img src="${imageUrl}">
+            <img src="img/${image.filename}">
+            <figcaption>
+              <a href="image.url">"${image.title}", ${image.artist}</a>
+            </figcaption>
           </figure>
         </div>
-        <div class="column">
+        <div class="column is-two-thirds">
           ${palettes
             .map(
               (palette) =>
@@ -51,7 +65,7 @@ export async function generateHtml(imageUrls, numColors) {
                         (color) =>
                           `<div>
                             <div style="background-color: ${color}; height: 40px; width: 80px;"></div>
-                            <div>${color}</div>
+                            <div class="is-size-7">${color}</div>
                           </div>`
                       )
                       .join("\n")}

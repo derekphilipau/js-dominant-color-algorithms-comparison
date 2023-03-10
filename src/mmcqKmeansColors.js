@@ -1,19 +1,19 @@
 import quantize from "quantize";
 import { getKmeansColors, getKmeansWeightedColors } from "./kmeansColors.js";
-import { getPixelsAsync } from "./util/pixels.js";
+import { getPixelsAsync, getSampledPixelsAsync } from "./util/pixels.js";
 import { rgbToHsl, hslToHex } from "./util/color.js";
 
-export async function getMmcqKmeansColors(imageUrl, numColors) {
-  return process(imageUrl, numColors, false);
+export async function getMmcqKmeansColors(imageUrlOrPath, numColors) {
+  return process(imageUrlOrPath, numColors, false);
 }
 
-export async function getMmcqKmeansWeightedColors(imageUrl, numColors) {
-  return process(imageUrl, numColors, true);
+export async function getMmcqKmeansWeightedColors(imageUrlOrPath, numColors) {
+  return process(imageUrlOrPath, numColors, true);
 }
 
-export async function process(imageUrl, numColors, useWeighted = false) {
+export async function process(imageUrlOrPath, numColors, useWeighted = false) {
   const maximumColorCount = 255;
-  const pixels = await getPixelsAsync(imageUrl);
+  const pixels = await getPixelsAsync(imageUrlOrPath);
 
   const dataArray = [];
   for (let i = 0; i < pixels.shape[0]; i++) {
@@ -47,6 +47,6 @@ export async function process(imageUrl, numColors, useWeighted = false) {
   }
 
   if (useWeighted)
-    return getKmeansWeightedColors(imageUrl, numColors, reducedArray);
-  return getKmeansColors(imageUrl, numColors, reducedArray);
+    return getKmeansWeightedColors(imageUrlOrPath, numColors, reducedArray);
+  return getKmeansColors(imageUrlOrPath, numColors, reducedArray);
 }

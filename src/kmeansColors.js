@@ -1,21 +1,49 @@
 import { kmeans } from "ml-kmeans";
-import { getPixelsAsync } from "./util/pixels.js";
+import { getPixelsAsync, getSampledPixelsAsync } from "./util/pixels.js";
 import { rgbToHsl, hslToHex } from "./util/color.js";
 
 export async function getKmeansWeightedColors(
-  imageUrl,
+  imageUrlOrPath,
   numClusters,
   dataArray = []
 ) {
-  return process(imageUrl, numClusters, true, dataArray);
+  return process(imageUrlOrPath, numClusters, true, dataArray, false);
 }
 
-export async function getKmeansColors(imageUrl, numClusters, dataArray = []) {
-  return process(imageUrl, numClusters, false, dataArray);
+export async function getKmeansSampledWeightedColors(
+  imageUrlOrPath,
+  numClusters,
+  dataArray = []
+) {
+  return process(imageUrlOrPath, numClusters, true, dataArray, true);
 }
 
-async function process(imageUrl, numClusters, useWeighted, dataArray = []) {
-  const pixels = await getPixelsAsync(imageUrl);
+export async function getKmeansColors(
+  imageUrlOrPath,
+  numClusters,
+  dataArray = []
+) {
+  return process(imageUrlOrPath, numClusters, false, dataArray, false);
+}
+
+export async function getKmeansSampledColors(
+  imageUrlOrPath,
+  numClusters,
+  dataArray = []
+) {
+  return process(imageUrlOrPath, numClusters, false, dataArray, true);
+}
+
+async function process(
+  imageUrlOrPath,
+  numClusters,
+  useWeighted,
+  dataArray,
+  isSampled
+) {
+  const pixels = isSampled
+    ? await getSampledPixelsAsync(imageUrlOrPath)
+    : await getPixelsAsync(imageUrlOrPath);
 
   if (dataArray.length === 0) {
     for (let i = 0; i < pixels.shape[0]; i++) {

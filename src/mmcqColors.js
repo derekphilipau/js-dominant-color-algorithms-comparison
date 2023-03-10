@@ -7,11 +7,11 @@
  * http://www.leptonica.org/color-quantization.html
  */
 import quantize from "quantize";
-import { getPixelsAsync } from "./util/pixels.js";
+import { getPixelsAsync, getSampledPixelsAsync } from "./util/pixels.js";
 import { rgbToHex } from "./util/color.js";
 
-export async function modifiedMedianCutQuantization(imageUrl, numColors) {
-  const pixels = await getPixelsAsync(imageUrl);
+export async function modifiedMedianCutQuantization(imageUrlOrPath, numColors) {
+  const pixels = await getPixelsAsync(imageUrlOrPath);
 
   const dataArray = [];
   for (let i = 0; i < pixels.shape[0]; i++) {
