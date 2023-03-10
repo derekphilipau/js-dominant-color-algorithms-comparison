@@ -1,5 +1,9 @@
 import { kmeans } from "ml-kmeans";
-import { getPixelsAsync, getSampledPixelsAsync } from "./util/pixels.js";
+import {
+  getPixelsAsync,
+  getSampledPixelsAsync,
+  getHslDataArray,
+} from "./util/pixels.js";
 import { rgbToHsl, hslToHex } from "./util/color.js";
 
 export async function getKmeansWeightedColors(
@@ -46,19 +50,7 @@ async function process(
     : await getPixelsAsync(imageUrlOrPath);
 
   if (dataArray.length === 0) {
-    for (let i = 0; i < pixels.shape[0]; i++) {
-      const row = [];
-      for (let j = 0; j < pixels.shape[1]; j++) {
-        const idx = (i * pixels.shape[1] + j) * pixels.shape[2];
-        const [h, s, l] = rgbToHsl({
-          r: pixels.data[idx],
-          g: pixels.data[idx + 1],
-          b: pixels.data[idx + 2],
-        });
-        row.push(h, s, l);
-      }
-      dataArray.push(row);
-    }
+    dataArray = getHslDataArray(pixels);
   }
 
   const clusters = kmeans(dataArray, numClusters, {

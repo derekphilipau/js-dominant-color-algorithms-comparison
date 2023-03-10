@@ -13,7 +13,15 @@ import {
 
 async function getPalettes(imageFile, numColors) {
   const kmeansColors = await getKmeansColors(imageFile, numColors);
+  const kmeansSampledColors = await getKmeansSampledColors(
+    imageFile,
+    numColors
+  );
   const kmeansWeightedColors = await getKmeansWeightedColors(
+    imageFile,
+    numColors
+  );
+  const kmeansSampledWeightedColors = await getKmeansSampledWeightedColors(
     imageFile,
     numColors
   );
@@ -26,7 +34,12 @@ async function getPalettes(imageFile, numColors) {
 
   return [
     { name: "K-means Colors", colors: kmeansColors },
+    { name: "K-means Sampled Colors", colors: kmeansSampledColors },
     { name: "K-means Weighted Colors", colors: kmeansWeightedColors },
+    {
+      name: "K-means Sampled Weighted Colors",
+      colors: kmeansSampledWeightedColors,
+    },
     { name: "MMCQ Colors", colors: mmcqColors },
     { name: "MMCQ K-means Colors", colors: mmcqKmeansColors },
     {
