@@ -37,17 +37,18 @@ async function generateColorPalette(imageUrls, numColors) {
     ];
 
     const imageHtml = `
-      <div class="row">
-        <div style="display: flex;">
-          <div style="margin-right: 20px;">
-            <img src="${imageUrl}" width="400" height="400">
-          </div>
-          <div>
-            ${palettes
+      <div class="columns">
+        <div class="column">
+          <figure class="image">
+            <img src="${imageUrl}">
+          </figure>
+        </div>
+        <div class="column">
+          ${palettes
               .map(
                 (palette) =>
-                  `<div>
-                    <h4>${palette.name}</h4>
+                  `<div class="pb-3">
+                    <h4 class="subtitle mb-1">${palette.name}</h4>
                     <div style="display: flex;">
                     ${palette.colors
                       .map(
@@ -62,7 +63,6 @@ async function generateColorPalette(imageUrls, numColors) {
                   </div>`
               )
               .join("\n")}
-          </div>
         </div>
       </div>
     `;
@@ -78,8 +78,17 @@ async function generateColorPalette(imageUrls, numColors) {
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
       </head>
       <body>
-        <section>
-          <h1 class="title">Dominant Image Color Algorithms</h1>
+        <section class="hero">
+          <div class="hero-body">
+            <p class="title">
+              Dominant Image Color Algorithms
+            </p>
+            <p class="subtitle">
+              <a href="https://github.com/derekphilipau/dominant-color-algorithms">View on Github</a>
+            </p>
+          </div>
+        </section>
+        <section class="container">
           ${imageDivs.join("\n")}
         </section>
       </body>
