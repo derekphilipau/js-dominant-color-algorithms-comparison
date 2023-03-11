@@ -15,6 +15,26 @@
             <p class="subtitle">
               <a href="https://github.com/derekphilipau/dominant-color-algorithms">View on Github</a>
             </p>
+            <p class="content">
+              K-means clustering using the <a href="">ml-kmeans</a> library.
+              MMCQ (modified median cut quantization) algorithm from
+              <a href="http://www.leptonica.org/color-quantization.html">Leptonica library</a>
+              implemented in <a href="https://github.com/olivierlesnicki/quantize">quantize</a> Javascript package.
+            </p>
+            <p class="content">
+              Naive, unoptimized implementations with some help from ChatGPT.
+              Regardless, MMCQ seems much faster than K-means.
+            </p>
+            <p class="content">
+              Typical run:
+              <ul>
+                <li>K-means: 3.684s</li>
+                <li>K-means with weighting: 5.949s</li>
+                <li>MMCQ: 239.532ms (Note this is ms, not s!)</li>
+                <li>MMCQ then K-means: 6.201s</li>
+                <li>MMCQ then K-means with weighting: 8.603s</li>
+              </ul>
+            </p>
           </div>
         </section>
         <section class="container">
@@ -410,6 +430,1797 @@
 <div>
                             <div style="background-color: #919a95; height: 40px; width: 80px;"></div>
                             <div class="is-size-7">#919a95</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/2021.45_PS11 (1).jpg">
+            <figcaption>
+              <a href="image.url">"The Arm Wrestle of Chip & Spike; aka: Star-Makers", Oscar yi Hou</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #829061; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#829061</div>
+                          </div>
+<div>
+                            <div style="background-color: #909f65; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#909f65</div>
+                          </div>
+<div>
+                            <div style="background-color: #709e58; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#709e58</div>
+                          </div>
+<div>
+                            <div style="background-color: #8c9f69; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8c9f69</div>
+                          </div>
+<div>
+                            <div style="background-color: #99a276; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#99a276</div>
+                          </div>
+<div>
+                            <div style="background-color: #67a862; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#67a862</div>
+                          </div>
+<div>
+                            <div style="background-color: #5f7d99; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5f7d99</div>
+                          </div>
+<div>
+                            <div style="background-color: #a7b7b0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a7b7b0</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #705b86; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#705b86</div>
+                          </div>
+<div>
+                            <div style="background-color: #302e27; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#302e27</div>
+                          </div>
+<div>
+                            <div style="background-color: #e4e7e7; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e4e7e7</div>
+                          </div>
+<div>
+                            <div style="background-color: #99af7d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#99af7d</div>
+                          </div>
+<div>
+                            <div style="background-color: #a4846e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a4846e</div>
+                          </div>
+<div>
+                            <div style="background-color: #c38635; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c38635</div>
+                          </div>
+<div>
+                            <div style="background-color: #567348; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#567348</div>
+                          </div>
+<div>
+                            <div style="background-color: #415443; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#415443</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #a58577; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a58577</div>
+                          </div>
+<div>
+                            <div style="background-color: #d3d1d6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d3d1d6</div>
+                          </div>
+<div>
+                            <div style="background-color: #2f2e36; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#2f2e36</div>
+                          </div>
+<div>
+                            <div style="background-color: #cbc0ab; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cbc0ab</div>
+                          </div>
+<div>
+                            <div style="background-color: #daa465; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#daa465</div>
+                          </div>
+<div>
+                            <div style="background-color: #5c565f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5c565f</div>
+                          </div>
+<div>
+                            <div style="background-color: #6a343d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6a343d</div>
+                          </div>
+<div>
+                            <div style="background-color: #663c28; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#663c28</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #9d9473; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9d9473</div>
+                          </div>
+<div>
+                            <div style="background-color: #639c60; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#639c60</div>
+                          </div>
+<div>
+                            <div style="background-color: #93a477; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#93a477</div>
+                          </div>
+<div>
+                            <div style="background-color: #959767; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#959767</div>
+                          </div>
+<div>
+                            <div style="background-color: #689aa2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#689aa2</div>
+                          </div>
+<div>
+                            <div style="background-color: #889f5c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#889f5c</div>
+                          </div>
+<div>
+                            <div style="background-color: #868755; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#868755</div>
+                          </div>
+<div>
+                            <div style="background-color: #a1a271; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a1a271</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #423c2c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#423c2c</div>
+                          </div>
+<div>
+                            <div style="background-color: #627f64; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#627f64</div>
+                          </div>
+<div>
+                            <div style="background-color: #a68167; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a68167</div>
+                          </div>
+<div>
+                            <div style="background-color: #7b739b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7b739b</div>
+                          </div>
+<div>
+                            <div style="background-color: #a7b495; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a7b495</div>
+                          </div>
+<div>
+                            <div style="background-color: #6b8049; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6b8049</div>
+                          </div>
+<div>
+                            <div style="background-color: #cdc99d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cdc99d</div>
+                          </div>
+<div>
+                            <div style="background-color: #828377; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#828377</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/CUR.2014.37_Nicola_Vassell_photograph.jpg">
+            <figcaption>
+              <a href="image.url">"P31:10", Rashaad Newsome</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #e7e1c9; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e7e1c9</div>
+                          </div>
+<div>
+                            <div style="background-color: #44a27c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#44a27c</div>
+                          </div>
+<div>
+                            <div style="background-color: #c8d35f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c8d35f</div>
+                          </div>
+<div>
+                            <div style="background-color: #d4ca7a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d4ca7a</div>
+                          </div>
+<div>
+                            <div style="background-color: #d0d582; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d0d582</div>
+                          </div>
+<div>
+                            <div style="background-color: #cdd596; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cdd596</div>
+                          </div>
+<div>
+                            <div style="background-color: #62a28d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#62a28d</div>
+                          </div>
+<div>
+                            <div style="background-color: #60ac83; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#60ac83</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #cf7b2b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cf7b2b</div>
+                          </div>
+<div>
+                            <div style="background-color: #096774; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#096774</div>
+                          </div>
+<div>
+                            <div style="background-color: #e3dbc8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e3dbc8</div>
+                          </div>
+<div>
+                            <div style="background-color: #c0d0c3; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c0d0c3</div>
+                          </div>
+<div>
+                            <div style="background-color: #eaeeb8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#eaeeb8</div>
+                          </div>
+<div>
+                            <div style="background-color: #9d6c07; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9d6c07</div>
+                          </div>
+<div>
+                            <div style="background-color: #bfc8af; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfc8af</div>
+                          </div>
+<div>
+                            <div style="background-color: #7d7599; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7d7599</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #253330; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#253330</div>
+                          </div>
+<div>
+                            <div style="background-color: #e5e0d3; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e5e0d3</div>
+                          </div>
+<div>
+                            <div style="background-color: #974a19; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#974a19</div>
+                          </div>
+<div>
+                            <div style="background-color: #c98a35; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c98a35</div>
+                          </div>
+<div>
+                            <div style="background-color: #878d8e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#878d8e</div>
+                          </div>
+<div>
+                            <div style="background-color: #ad9595; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ad9595</div>
+                          </div>
+<div>
+                            <div style="background-color: #24b780; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#24b780</div>
+                          </div>
+<div>
+                            <div style="background-color: #dcbb86; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#dcbb86</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #e6e2ca; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e6e2ca</div>
+                          </div>
+<div>
+                            <div style="background-color: #e2deb5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e2deb5</div>
+                          </div>
+<div>
+                            <div style="background-color: #c4be4f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c4be4f</div>
+                          </div>
+<div>
+                            <div style="background-color: #56b14e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#56b14e</div>
+                          </div>
+<div>
+                            <div style="background-color: #82b948; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#82b948</div>
+                          </div>
+<div>
+                            <div style="background-color: #5d927c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5d927c</div>
+                          </div>
+<div>
+                            <div style="background-color: #e1deba; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e1deba</div>
+                          </div>
+<div>
+                            <div style="background-color: #6ba36c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6ba36c</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #f9f2dd; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#f9f2dd</div>
+                          </div>
+<div>
+                            <div style="background-color: #c6d1c6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c6d1c6</div>
+                          </div>
+<div>
+                            <div style="background-color: #067a36; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#067a36</div>
+                          </div>
+<div>
+                            <div style="background-color: #d2d7bf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d2d7bf</div>
+                          </div>
+<div>
+                            <div style="background-color: #83aa4d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#83aa4d</div>
+                          </div>
+<div>
+                            <div style="background-color: #e1d8c6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e1d8c6</div>
+                          </div>
+<div>
+                            <div style="background-color: #95581f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#95581f</div>
+                          </div>
+<div>
+                            <div style="background-color: #53559f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#53559f</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/CUR.2015.72.2_Magnin-A_photograph.jpg">
+            <figcaption>
+              <a href="image.url">"El Moro", Omar Victor Diop</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #78b19e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#78b19e</div>
+                          </div>
+<div>
+                            <div style="background-color: #95b9ba; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#95b9ba</div>
+                          </div>
+<div>
+                            <div style="background-color: #85a1b7; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#85a1b7</div>
+                          </div>
+<div>
+                            <div style="background-color: #64a49c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#64a49c</div>
+                          </div>
+<div>
+                            <div style="background-color: #62995e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#62995e</div>
+                          </div>
+<div>
+                            <div style="background-color: #aca5c9; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#aca5c9</div>
+                          </div>
+<div>
+                            <div style="background-color: #77975b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#77975b</div>
+                          </div>
+<div>
+                            <div style="background-color: #abb0be; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#abb0be</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #4a7cb1; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4a7cb1</div>
+                          </div>
+<div>
+                            <div style="background-color: #082029; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#082029</div>
+                          </div>
+<div>
+                            <div style="background-color: #cad2d2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cad2d2</div>
+                          </div>
+<div>
+                            <div style="background-color: #bfc7bf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfc7bf</div>
+                          </div>
+<div>
+                            <div style="background-color: #c8ccda; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c8ccda</div>
+                          </div>
+<div>
+                            <div style="background-color: #c9d5ce; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c9d5ce</div>
+                          </div>
+<div>
+                            <div style="background-color: #a18963; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a18963</div>
+                          </div>
+<div>
+                            <div style="background-color: #c0a1c0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c0a1c0</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #bdb0b7; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bdb0b7</div>
+                          </div>
+<div>
+                            <div style="background-color: #7a6438; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7a6438</div>
+                          </div>
+<div>
+                            <div style="background-color: #8c4d5a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8c4d5a</div>
+                          </div>
+<div>
+                            <div style="background-color: #998a6a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#998a6a</div>
+                          </div>
+<div>
+                            <div style="background-color: #cdc6e7; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cdc6e7</div>
+                          </div>
+<div>
+                            <div style="background-color: #a5818a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a5818a</div>
+                          </div>
+<div>
+                            <div style="background-color: #726f5a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#726f5a</div>
+                          </div>
+<div>
+                            <div style="background-color: #a49431; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a49431</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #7bb4a0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7bb4a0</div>
+                          </div>
+<div>
+                            <div style="background-color: #95bbb8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#95bbb8</div>
+                          </div>
+<div>
+                            <div style="background-color: #718955; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#718955</div>
+                          </div>
+<div>
+                            <div style="background-color: #9992b7; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9992b7</div>
+                          </div>
+<div>
+                            <div style="background-color: #75a3ae; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#75a3ae</div>
+                          </div>
+<div>
+                            <div style="background-color: #a5a8c8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a5a8c8</div>
+                          </div>
+<div>
+                            <div style="background-color: #6f8f5a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6f8f5a</div>
+                          </div>
+<div>
+                            <div style="background-color: #90b8b5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#90b8b5</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #858c8b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#858c8b</div>
+                          </div>
+<div>
+                            <div style="background-color: #b79ab4; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b79ab4</div>
+                          </div>
+<div>
+                            <div style="background-color: #ced5d5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ced5d5</div>
+                          </div>
+<div>
+                            <div style="background-color: #2f5879; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#2f5879</div>
+                          </div>
+<div>
+                            <div style="background-color: #c3cac0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c3cac0</div>
+                          </div>
+<div>
+                            <div style="background-color: #bbcac0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bbcac0</div>
+                          </div>
+<div>
+                            <div style="background-color: #a08963; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a08963</div>
+                          </div>
+<div>
+                            <div style="background-color: #d3d3e8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d3d3e8</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/TL2020.7_PS11.jpg">
+            <figcaption>
+              <a href="image.url">"Triumph of the Vanities II", Cecily Brown</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #598347; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#598347</div>
+                          </div>
+<div>
+                            <div style="background-color: #4d845e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4d845e</div>
+                          </div>
+<div>
+                            <div style="background-color: #4c8b67; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4c8b67</div>
+                          </div>
+<div>
+                            <div style="background-color: #527d8d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#527d8d</div>
+                          </div>
+<div>
+                            <div style="background-color: #57967c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#57967c</div>
+                          </div>
+<div>
+                            <div style="background-color: #508c76; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#508c76</div>
+                          </div>
+<div>
+                            <div style="background-color: #4a6081; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4a6081</div>
+                          </div>
+<div>
+                            <div style="background-color: #474373; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#474373</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #7c4e66; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7c4e66</div>
+                          </div>
+<div>
+                            <div style="background-color: #bac5c1; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bac5c1</div>
+                          </div>
+<div>
+                            <div style="background-color: #925e4b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#925e4b</div>
+                          </div>
+<div>
+                            <div style="background-color: #35403d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#35403d</div>
+                          </div>
+<div>
+                            <div style="background-color: #13261b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#13261b</div>
+                          </div>
+<div>
+                            <div style="background-color: #7d9299; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7d9299</div>
+                          </div>
+<div>
+                            <div style="background-color: #6073a0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6073a0</div>
+                          </div>
+<div>
+                            <div style="background-color: #4a544c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4a544c</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #6b3f3e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6b3f3e</div>
+                          </div>
+<div>
+                            <div style="background-color: #ceac9f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ceac9f</div>
+                          </div>
+<div>
+                            <div style="background-color: #a29cb0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a29cb0</div>
+                          </div>
+<div>
+                            <div style="background-color: #322a31; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#322a31</div>
+                          </div>
+<div>
+                            <div style="background-color: #977880; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#977880</div>
+                          </div>
+<div>
+                            <div style="background-color: #a86551; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a86551</div>
+                          </div>
+<div>
+                            <div style="background-color: #b4987f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b4987f</div>
+                          </div>
+<div>
+                            <div style="background-color: #8c725e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8c725e</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #4d8468; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4d8468</div>
+                          </div>
+<div>
+                            <div style="background-color: #4d8c67; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4d8c67</div>
+                          </div>
+<div>
+                            <div style="background-color: #6f8548; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6f8548</div>
+                          </div>
+<div>
+                            <div style="background-color: #4a6b7e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4a6b7e</div>
+                          </div>
+<div>
+                            <div style="background-color: #528e87; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#528e87</div>
+                          </div>
+<div>
+                            <div style="background-color: #519063; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#519063</div>
+                          </div>
+<div>
+                            <div style="background-color: #589379; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#589379</div>
+                          </div>
+<div>
+                            <div style="background-color: #466e74; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#466e74</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #363e3f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#363e3f</div>
+                          </div>
+<div>
+                            <div style="background-color: #7e4f6e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7e4f6e</div>
+                          </div>
+<div>
+                            <div style="background-color: #NaNNaNNaN; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#NaNNaNNaN</div>
+                          </div>
+<div>
+                            <div style="background-color: #b6c0bd; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b6c0bd</div>
+                          </div>
+<div>
+                            <div style="background-color: #8c9d9c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8c9d9c</div>
+                          </div>
+<div>
+                            <div style="background-color: #925e4b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#925e4b</div>
+                          </div>
+<div>
+                            <div style="background-color: #343d38; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#343d38</div>
+                          </div>
+<div>
+                            <div style="background-color: #546055; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#546055</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/TL2021.66_PS11.jpg">
+            <figcaption>
+              <a href="image.url">"Disease Thrower #18", Guadalupe Maravilla</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #bfbfbf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfbfbf</div>
+                          </div>
+<div>
+                            <div style="background-color: #b7b5b4; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b7b5b4</div>
+                          </div>
+<div>
+                            <div style="background-color: #b7aea9; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b7aea9</div>
+                          </div>
+<div>
+                            <div style="background-color: #a2976e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a2976e</div>
+                          </div>
+<div>
+                            <div style="background-color: #907c5b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#907c5b</div>
+                          </div>
+<div>
+                            <div style="background-color: #9e8f5f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9e8f5f</div>
+                          </div>
+<div>
+                            <div style="background-color: #bfbfbf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfbfbf</div>
+                          </div>
+<div>
+                            <div style="background-color: #bfbfbf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfbfbf</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #c8a45f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c8a45f</div>
+                          </div>
+<div>
+                            <div style="background-color: #868686; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#868686</div>
+                          </div>
+<div>
+                            <div style="background-color: #adadad; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#adadad</div>
+                          </div>
+<div>
+                            <div style="background-color: #c6bcb1; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c6bcb1</div>
+                          </div>
+<div>
+                            <div style="background-color: #775f45; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#775f45</div>
+                          </div>
+<div>
+                            <div style="background-color: #bfbfbf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfbfbf</div>
+                          </div>
+<div>
+                            <div style="background-color: #bcbcbc; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bcbcbc</div>
+                          </div>
+<div>
+                            <div style="background-color: #abc1a2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#abc1a2</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #bcbbb9; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bcbbb9</div>
+                          </div>
+<div>
+                            <div style="background-color: #3f3226; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#3f3226</div>
+                          </div>
+<div>
+                            <div style="background-color: #654e35; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#654e35</div>
+                          </div>
+<div>
+                            <div style="background-color: #826844; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#826844</div>
+                          </div>
+<div>
+                            <div style="background-color: #ad9674; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ad9674</div>
+                          </div>
+<div>
+                            <div style="background-color: #7c7771; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7c7771</div>
+                          </div>
+<div>
+                            <div style="background-color: #957e61; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#957e61</div>
+                          </div>
+<div>
+                            <div style="background-color: #e2d1b5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e2d1b5</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #a69379; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a69379</div>
+                          </div>
+<div>
+                            <div style="background-color: #a19171; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a19171</div>
+                          </div>
+<div>
+                            <div style="background-color: #bcbcbc; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bcbcbc</div>
+                          </div>
+<div>
+                            <div style="background-color: #bababa; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bababa</div>
+                          </div>
+<div>
+                            <div style="background-color: #897552; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#897552</div>
+                          </div>
+<div>
+                            <div style="background-color: #b5afad; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b5afad</div>
+                          </div>
+<div>
+                            <div style="background-color: #bdbdbd; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bdbdbd</div>
+                          </div>
+<div>
+                            <div style="background-color: #aea69a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#aea69a</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #c3ab8b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c3ab8b</div>
+                          </div>
+<div>
+                            <div style="background-color: #c4bfb2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c4bfb2</div>
+                          </div>
+<div>
+                            <div style="background-color: #6d573c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6d573c</div>
+                          </div>
+<div>
+                            <div style="background-color: #929292; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#929292</div>
+                          </div>
+<div>
+                            <div style="background-color: #92a9a0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#92a9a0</div>
+                          </div>
+<div>
+                            <div style="background-color: #cdc5c5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cdc5c5</div>
+                          </div>
+<div>
+                            <div style="background-color: #bbb5b2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bbb5b2</div>
+                          </div>
+<div>
+                            <div style="background-color: #bfbfbf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfbfbf</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/CUR.2017.25.1_KrisGraves_photograph.jpg">
+            <figcaption>
+              <a href="image.url">"Tarabu and Mamie Kirkland, Los Angeles, California", Kris Graves</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #c39c45; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c39c45</div>
+                          </div>
+<div>
+                            <div style="background-color: #d19d39; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d19d39</div>
+                          </div>
+<div>
+                            <div style="background-color: #8c724e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8c724e</div>
+                          </div>
+<div>
+                            <div style="background-color: #76733d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#76733d</div>
+                          </div>
+<div>
+                            <div style="background-color: #d1c9b3; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d1c9b3</div>
+                          </div>
+<div>
+                            <div style="background-color: #aca573; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#aca573</div>
+                          </div>
+<div>
+                            <div style="background-color: #335047; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#335047</div>
+                          </div>
+<div>
+                            <div style="background-color: #79673b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#79673b</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #d0c0ad; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d0c0ad</div>
+                          </div>
+<div>
+                            <div style="background-color: #d4982c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d4982c</div>
+                          </div>
+<div>
+                            <div style="background-color: #c89764; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c89764</div>
+                          </div>
+<div>
+                            <div style="background-color: #9e9a80; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9e9a80</div>
+                          </div>
+<div>
+                            <div style="background-color: #587687; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#587687</div>
+                          </div>
+<div>
+                            <div style="background-color: #646241; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#646241</div>
+                          </div>
+<div>
+                            <div style="background-color: #917453; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#917453</div>
+                          </div>
+<div>
+                            <div style="background-color: #5b472d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5b472d</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #bb8a3e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bb8a3e</div>
+                          </div>
+<div>
+                            <div style="background-color: #36342c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#36342c</div>
+                          </div>
+<div>
+                            <div style="background-color: #ded7cb; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ded7cb</div>
+                          </div>
+<div>
+                            <div style="background-color: #705f48; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#705f48</div>
+                          </div>
+<div>
+                            <div style="background-color: #bc9f82; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bc9f82</div>
+                          </div>
+<div>
+                            <div style="background-color: #d6c49b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d6c49b</div>
+                          </div>
+<div>
+                            <div style="background-color: #663921; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#663921</div>
+                          </div>
+<div>
+                            <div style="background-color: #92592e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#92592e</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #b98539; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b98539</div>
+                          </div>
+<div>
+                            <div style="background-color: #a78f59; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a78f59</div>
+                          </div>
+<div>
+                            <div style="background-color: #d09c39; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d09c39</div>
+                          </div>
+<div>
+                            <div style="background-color: #d3cab8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d3cab8</div>
+                          </div>
+<div>
+                            <div style="background-color: #445633; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#445633</div>
+                          </div>
+<div>
+                            <div style="background-color: #927148; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#927148</div>
+                          </div>
+<div>
+                            <div style="background-color: #aea776; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#aea776</div>
+                          </div>
+<div>
+                            <div style="background-color: #535f38; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#535f38</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #d2c2b0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d2c2b0</div>
+                          </div>
+<div>
+                            <div style="background-color: #d59c32; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d59c32</div>
+                          </div>
+<div>
+                            <div style="background-color: #a08761; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a08761</div>
+                          </div>
+<div>
+                            <div style="background-color: #928f71; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#928f71</div>
+                          </div>
+<div>
+                            <div style="background-color: #7d6243; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7d6243</div>
+                          </div>
+<div>
+                            <div style="background-color: #5d5d41; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5d5d41</div>
+                          </div>
+<div>
+                            <div style="background-color: #c27f44; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c27f44</div>
+                          </div>
+<div>
+                            <div style="background-color: #597886; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#597886</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/1999.13.1_PS4.jpg">
+            <figcaption>
+              <a href="image.url">"Untitled, Coney Island Series", Lynn Hyman Butler</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #6d7183; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6d7183</div>
+                          </div>
+<div>
+                            <div style="background-color: #7d7692; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7d7692</div>
+                          </div>
+<div>
+                            <div style="background-color: #32362e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#32362e</div>
+                          </div>
+<div>
+                            <div style="background-color: #4d6960; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4d6960</div>
+                          </div>
+<div>
+                            <div style="background-color: #63617f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#63617f</div>
+                          </div>
+<div>
+                            <div style="background-color: #557c67; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#557c67</div>
+                          </div>
+<div>
+                            <div style="background-color: #29312c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#29312c</div>
+                          </div>
+<div>
+                            <div style="background-color: #9d964d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9d964d</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #3b3f3b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#3b3f3b</div>
+                          </div>
+<div>
+                            <div style="background-color: #4d4f44; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4d4f44</div>
+                          </div>
+<div>
+                            <div style="background-color: #817488; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#817488</div>
+                          </div>
+<div>
+                            <div style="background-color: #5a607e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5a607e</div>
+                          </div>
+<div>
+                            <div style="background-color: #625744; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#625744</div>
+                          </div>
+<div>
+                            <div style="background-color: #878f87; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#878f87</div>
+                          </div>
+<div>
+                            <div style="background-color: #4a4863; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4a4863</div>
+                          </div>
+<div>
+                            <div style="background-color: #525757; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#525757</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #252427; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#252427</div>
+                          </div>
+<div>
+                            <div style="background-color: #87829b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#87829b</div>
+                          </div>
+<div>
+                            <div style="background-color: #b2ac8f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b2ac8f</div>
+                          </div>
+<div>
+                            <div style="background-color: #99968c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#99968c</div>
+                          </div>
+<div>
+                            <div style="background-color: #7e786b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7e786b</div>
+                          </div>
+<div>
+                            <div style="background-color: #4d4c68; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4d4c68</div>
+                          </div>
+<div>
+                            <div style="background-color: #676776; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#676776</div>
+                          </div>
+<div>
+                            <div style="background-color: #a49486; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a49486</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #707488; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#707488</div>
+                          </div>
+<div>
+                            <div style="background-color: #4a6850; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4a6850</div>
+                          </div>
+<div>
+                            <div style="background-color: #7b7690; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7b7690</div>
+                          </div>
+<div>
+                            <div style="background-color: #5a757a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5a757a</div>
+                          </div>
+<div>
+                            <div style="background-color: #31302b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#31302b</div>
+                          </div>
+<div>
+                            <div style="background-color: #6e6987; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6e6987</div>
+                          </div>
+<div>
+                            <div style="background-color: #333529; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#333529</div>
+                          </div>
+<div>
+                            <div style="background-color: #96934d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#96934d</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #565b44; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#565b44</div>
+                          </div>
+<div>
+                            <div style="background-color: #211f1e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#211f1e</div>
+                          </div>
+<div>
+                            <div style="background-color: #83758a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#83758a</div>
+                          </div>
+<div>
+                            <div style="background-color: #a8a35e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a8a35e</div>
+                          </div>
+<div>
+                            <div style="background-color: #7d877c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7d877c</div>
+                          </div>
+<div>
+                            <div style="background-color: #525876; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#525876</div>
+                          </div>
+<div>
+                            <div style="background-color: #4e4a63; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4e4a63</div>
+                          </div>
+<div>
+                            <div style="background-color: #4e5556; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4e5556</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/CUR.2003.37_Yossi_Milo_Gallery_photograph.jpg">
+            <figcaption>
+              <a href="image.url">"Spring", Loretta Lux</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #849160; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#849160</div>
+                          </div>
+<div>
+                            <div style="background-color: #98b69c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#98b69c</div>
+                          </div>
+<div>
+                            <div style="background-color: #b5c7c3; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b5c7c3</div>
+                          </div>
+<div>
+                            <div style="background-color: #a6beac; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a6beac</div>
+                          </div>
+<div>
+                            <div style="background-color: #c5c7ad; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c5c7ad</div>
+                          </div>
+<div>
+                            <div style="background-color: #b7cdbb; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b7cdbb</div>
+                          </div>
+<div>
+                            <div style="background-color: #cec7af; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cec7af</div>
+                          </div>
+<div>
+                            <div style="background-color: #bccdc1; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bccdc1</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #d6cdbc; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d6cdbc</div>
+                          </div>
+<div>
+                            <div style="background-color: #7ca371; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7ca371</div>
+                          </div>
+<div>
+                            <div style="background-color: #c8d1c6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c8d1c6</div>
+                          </div>
+<div>
+                            <div style="background-color: #7c895a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7c895a</div>
+                          </div>
+<div>
+                            <div style="background-color: #c3cdc6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c3cdc6</div>
+                          </div>
+<div>
+                            <div style="background-color: #b4c7c4; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b4c7c4</div>
+                          </div>
+<div>
+                            <div style="background-color: #a3b4a8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a3b4a8</div>
+                          </div>
+<div>
+                            <div style="background-color: #cdcfc1; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cdcfc1</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #6f7c50; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6f7c50</div>
+                          </div>
+<div>
+                            <div style="background-color: #b7c7c3; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b7c7c3</div>
+                          </div>
+<div>
+                            <div style="background-color: #dfdace; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#dfdace</div>
+                          </div>
+<div>
+                            <div style="background-color: #8c9e75; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8c9e75</div>
+                          </div>
+<div>
+                            <div style="background-color: #749a6c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#749a6c</div>
+                          </div>
+<div>
+                            <div style="background-color: #7e7a70; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7e7a70</div>
+                          </div>
+<div>
+                            <div style="background-color: #a4ac64; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a4ac64</div>
+                          </div>
+<div>
+                            <div style="background-color: #9a9897; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9a9897</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #848f61; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#848f61</div>
+                          </div>
+<div>
+                            <div style="background-color: #a2bdaa; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a2bdaa</div>
+                          </div>
+<div>
+                            <div style="background-color: #b1c5bf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b1c5bf</div>
+                          </div>
+<div>
+                            <div style="background-color: #c6c6aa; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c6c6aa</div>
+                          </div>
+<div>
+                            <div style="background-color: #b8c9c5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b8c9c5</div>
+                          </div>
+<div>
+                            <div style="background-color: #b7c2a2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b7c2a2</div>
+                          </div>
+<div>
+                            <div style="background-color: #bacfb9; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bacfb9</div>
+                          </div>
+<div>
+                            <div style="background-color: #c7c8b0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c7c8b0</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #d5d6c9; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d5d6c9</div>
+                          </div>
+<div>
+                            <div style="background-color: #bac7be; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bac7be</div>
+                          </div>
+<div>
+                            <div style="background-color: #b4c6c5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b4c6c5</div>
+                          </div>
+<div>
+                            <div style="background-color: #b5bfa8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b5bfa8</div>
+                          </div>
+<div>
+                            <div style="background-color: #89aa7f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#89aa7f</div>
+                          </div>
+<div>
+                            <div style="background-color: #7a8658; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7a8658</div>
+                          </div>
+<div>
+                            <div style="background-color: #d5cdbc; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d5cdbc</div>
+                          </div>
+<div>
+                            <div style="background-color: #b6c8c2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b6c8c2</div>
+                          </div>
+                    </div>
+                  </div>
+        </div>
+      </div>
+    
+
+      <div class="columns">
+        <div class="column is-one-third">
+          <figure class="image">
+            <img src="img/CUR.2012.73a-b_Lehman_Maupin_photo_LM15960.jpg">
+            <figcaption>
+              <a href="image.url">"Monet's Salle a Manger Jaune", Mickalene Thomas</a>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="column is-two-thirds">
+          <div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #80b344; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#80b344</div>
+                          </div>
+<div>
+                            <div style="background-color: #68644a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#68644a</div>
+                          </div>
+<div>
+                            <div style="background-color: #64b662; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#64b662</div>
+                          </div>
+<div>
+                            <div style="background-color: #6ab54d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6ab54d</div>
+                          </div>
+<div>
+                            <div style="background-color: #7bb56a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7bb56a</div>
+                          </div>
+<div>
+                            <div style="background-color: #9eba50; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9eba50</div>
+                          </div>
+<div>
+                            <div style="background-color: #c3d4d2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c3d4d2</div>
+                          </div>
+<div>
+                            <div style="background-color: #372f30; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#372f30</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #51424c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#51424c</div>
+                          </div>
+<div>
+                            <div style="background-color: #3d5034; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#3d5034</div>
+                          </div>
+<div>
+                            <div style="background-color: #9eb8c1; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9eb8c1</div>
+                          </div>
+<div>
+                            <div style="background-color: #dcbd43; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#dcbd43</div>
+                          </div>
+<div>
+                            <div style="background-color: #c2cac2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c2cac2</div>
+                          </div>
+<div>
+                            <div style="background-color: #45624d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#45624d</div>
+                          </div>
+<div>
+                            <div style="background-color: #3d4f26; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#3d4f26</div>
+                          </div>
+<div>
+                            <div style="background-color: #715846; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#715846</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #c5d3d5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c5d3d5</div>
+                          </div>
+<div>
+                            <div style="background-color: #e4ce42; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e4ce42</div>
+                          </div>
+<div>
+                            <div style="background-color: #3d332d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#3d332d</div>
+                          </div>
+<div>
+                            <div style="background-color: #c98d34; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c98d34</div>
+                          </div>
+<div>
+                            <div style="background-color: #928855; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#928855</div>
+                          </div>
+<div>
+                            <div style="background-color: #8d5429; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8d5429</div>
+                          </div>
+<div>
+                            <div style="background-color: #7484a4; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#7484a4</div>
+                          </div>
+<div>
+                            <div style="background-color: #5d6274; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5d6274</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #6d814a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6d814a</div>
+                          </div>
+<div>
+                            <div style="background-color: #55b762; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#55b762</div>
+                          </div>
+<div>
+                            <div style="background-color: #9eb76c; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9eb76c</div>
+                          </div>
+<div>
+                            <div style="background-color: #93a253; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#93a253</div>
+                          </div>
+<div>
+                            <div style="background-color: #83ab47; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#83ab47</div>
+                          </div>
+<div>
+                            <div style="background-color: #9db944; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9db944</div>
+                          </div>
+<div>
+                            <div style="background-color: #c4be58; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c4be58</div>
+                          </div>
+<div>
+                            <div style="background-color: #c5cdcf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c5cdcf</div>
+                          </div>
+                    </div>
+                  </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">MMCQ K-means Weighted Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #575047; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#575047</div>
+                          </div>
+<div>
+                            <div style="background-color: #486324; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#486324</div>
+                          </div>
+<div>
+                            <div style="background-color: #8894af; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8894af</div>
+                          </div>
+<div>
+                            <div style="background-color: #dfe0d6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#dfe0d6</div>
+                          </div>
+<div>
+                            <div style="background-color: #b37837; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b37837</div>
+                          </div>
+<div>
+                            <div style="background-color: #badb43; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#badb43</div>
+                          </div>
+<div>
+                            <div style="background-color: #3e4733; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#3e4733</div>
+                          </div>
+<div>
+                            <div style="background-color: #9baf9e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9baf9e</div>
                           </div>
                     </div>
                   </div>

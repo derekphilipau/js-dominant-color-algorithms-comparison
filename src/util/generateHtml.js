@@ -12,11 +12,15 @@ import {
 } from "../mmcqKmeansColors.js";
 
 async function getPalettes(imageFile, numColors) {
+  console.time("getKmeansColors");
   const kmeansColors = await getKmeansColors(imageFile, numColors);
+  console.timeEnd("getKmeansColors");
+  console.time("getKmeansWeightedColors");
   const kmeansWeightedColors = await getKmeansWeightedColors(
     imageFile,
     numColors
   );
+  console.timeEnd("getKmeansWeightedColors");
   /*
   const kmeansSampledColors = await getKmeansSampledColors(
     imageFile,
@@ -27,12 +31,21 @@ async function getPalettes(imageFile, numColors) {
     numColors
   );
   */
+
+  console.time("modifiedMedianCutQuantization");
   const mmcqColors = await modifiedMedianCutQuantization(imageFile, numColors);
+  console.timeEnd("modifiedMedianCutQuantization");
+
+  console.time("getMmcqKmeansColors");
   const mmcqKmeansColors = await getMmcqKmeansColors(imageFile, numColors);
+  console.timeEnd("getMmcqKmeansColors");
+
+  console.time("getMmcqKmeansWeightedColors");
   const mmcqKmeansWeightedColors = await getMmcqKmeansWeightedColors(
     imageFile,
     numColors
   );
+  console.timeEnd("getMmcqKmeansWeightedColors");
 
   return [
     { name: "K-means Colors", colors: kmeansColors },
@@ -112,6 +125,26 @@ export async function generateHtml(images, numColors) {
             </p>
             <p class="subtitle">
               <a href="https://github.com/derekphilipau/dominant-color-algorithms">View on Github</a>
+            </p>
+            <p class="content">
+              K-means clustering using the <a href="">ml-kmeans</a> library.
+              MMCQ (modified median cut quantization) algorithm from
+              <a href="http://www.leptonica.org/color-quantization.html">Leptonica library</a>
+              implemented in <a href="https://github.com/olivierlesnicki/quantize">quantize</a> Javascript package.
+            </p>
+            <p class="content">
+              Naive, unoptimized implementations with some help from ChatGPT.
+              Regardless, MMCQ seems much faster than K-means.
+            </p>
+            <p class="content">
+              Typical run:
+              <ul>
+                <li>K-means: 3.684s</li>
+                <li>K-means with weighting: 5.949s</li>
+                <li>MMCQ: 239.532ms (Note this is ms, not s!)</li>
+                <li>MMCQ then K-means: 6.201s</li>
+                <li>MMCQ then K-means with weighting: 8.603s</li>
+              </ul>
             </p>
           </div>
         </section>

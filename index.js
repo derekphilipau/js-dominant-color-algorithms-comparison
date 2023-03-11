@@ -1,6 +1,6 @@
 import { generateHtml } from "./src/util/generateHtml.js";
 
-const imagesx = [
+const images = [
   {
     filename: "2018.1_DM.13156.jpg",
     title: "Lot 043017 (Multiflora, Radiant Blue)",
@@ -87,25 +87,6 @@ const imagesx = [
     url: "https://bkm-next-search.vercel.app/collection/object/209424",
     imageUrl:
       "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/CUR.2012.73a-b_Lehman_Maupin_photo_LM15960.jpg",
-  },
-];
-
-const images = [
-  {
-    filename: "2018.1_DM.13156.jpg",
-    title: "Lot 043017 (Multiflora, Radiant Blue)",
-    artist: "Donald Moffett",
-    url: "https://bkm-next-search.vercel.app/collection/object/224276",
-    imageUrl:
-      "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/2018.1_DM.13156.jpg",
-  },
-  {
-    filename: "2019.11_view01_SC.jpg",
-    title: "... three kings weep ...",
-    artist: "Ebony G. Patterson",
-    url: "https://bkm-next-search.vercel.app/collection/object/224733",
-    imageUrl:
-      "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/2019.11_view01_SC.jpg",
   },
 ];
 
