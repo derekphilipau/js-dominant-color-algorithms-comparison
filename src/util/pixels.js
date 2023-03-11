@@ -56,6 +56,19 @@ function samplePixels(pixels, targetPixels) {
   return result;
 }
 
+export function getRgbDataArray(pixels) {
+  const dataArray = [];
+  for (let i = 0; i < pixels.shape[0]; i++) {
+    const row = [];
+    for (let j = 0; j < pixels.shape[1]; j++) {
+      const idx = (i * pixels.shape[1] + j) * pixels.shape[2];
+      row.push(pixels.data[idx], pixels.data[idx + 1], pixels.data[idx + 2]);
+    }
+    dataArray.push(row);
+  }
+  return dataArray;
+}
+
 export function getHslDataArray(pixels) {
   const dataArray = [];
   for (let i = 0; i < pixels.shape[0]; i++) {

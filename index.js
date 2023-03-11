@@ -1,6 +1,6 @@
 import { generateHtml } from "./src/util/generateHtml.js";
 
-const images = [
+const imagesx = [
   {
     filename: "2018.1_DM.13156.jpg",
     title: "Lot 043017 (Multiflora, Radiant Blue)",
@@ -90,7 +90,7 @@ const images = [
   },
 ];
 
-const imagesx = [
+const images = [
   {
     filename: "2018.1_DM.13156.jpg",
     title: "Lot 043017 (Multiflora, Radiant Blue)",
@@ -106,14 +106,6 @@ const imagesx = [
     url: "https://bkm-next-search.vercel.app/collection/object/224733",
     imageUrl:
       "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/2019.11_view01_SC.jpg",
-  },
-  {
-    filename: "2021.45_PS11 (1).jpg",
-    title: "The Arm Wrestle of Chip & Spike; aka: Star-Makers",
-    artist: "Oscar yi Hou",
-    url: "https://bkm-next-search.vercel.app/collection/object/224994",
-    imageUrl:
-      "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/2021.45_PS11.jpg",
   },
 ];
 

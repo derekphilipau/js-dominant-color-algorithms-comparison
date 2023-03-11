@@ -1,11 +1,6 @@
 import quantize from "quantize";
 import { getKmeansColors, getKmeansWeightedColors } from "./kmeansColors.js";
-import {
-  getPixelsAsync,
-  getSampledPixelsAsync,
-  getHslDataArray,
-  saveImage,
-} from "./util/pixels.js";
+import { getPixelsAsync, getRgbDataArray } from "./util/pixels.js";
 import ndarray from "ndarray";
 import { rgbToHsl, hslToHex } from "./util/color.js";
 
@@ -20,7 +15,7 @@ export async function getMmcqKmeansWeightedColors(imageUrlOrPath, numColors) {
 export async function process(imageUrlOrPath, numColors, useWeighted = false) {
   const maximumColorCount = 255;
   const pixels = await getPixelsAsync(imageUrlOrPath);
-  const dataArray = getHslDataArray(pixels);
+  const dataArray = getRgbDataArray(pixels);
   const colorMap = quantize(dataArray, maximumColorCount); // maximumColorCount 2-256
   if (!colorMap) throw new Error("Could not create color map");
 

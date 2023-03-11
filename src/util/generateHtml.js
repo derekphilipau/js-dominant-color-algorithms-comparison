@@ -122,5 +122,5 @@ export async function generateHtml(images, numColors) {
     </html>
   `;
 
-  writeFileSync("color-palette.html", html);
+  writeFileSync("index.html", html);
 }
