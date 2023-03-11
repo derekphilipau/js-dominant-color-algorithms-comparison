@@ -90,4 +90,15 @@ const images = [
   },
 ];
 
+const imagesx = [
+  {
+    filename: "2018.1_DM.13156.jpg",
+    title: "Lot 043017 (Multiflora, Radiant Blue)",
+    artist: "Donald Moffett",
+    url: "https://bkm-next-search.vercel.app/collection/object/224276",
+    imageUrl:
+      "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/2018.1_DM.13156.jpg",
+  },
+]
+
 generateHtml(images, 8);

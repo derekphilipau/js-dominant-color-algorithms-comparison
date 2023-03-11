@@ -10,6 +10,7 @@ import {
   getMmcqKmeansColors,
   getMmcqKmeansWeightedColors,
 } from "../mmcqKmeansColors.js";
+import { rgbQuantColors } from "../rgbQuant.js";
 
 async function getPalettes(imageFile, numColors) {
   console.time("getKmeansColors");
@@ -21,16 +22,6 @@ async function getPalettes(imageFile, numColors) {
     numColors
   );
   console.timeEnd("getKmeansWeightedColors");
-  /*
-  const kmeansSampledColors = await getKmeansSampledColors(
-    imageFile,
-    numColors
-  );
-  const kmeansSampledWeightedColors = await getKmeansSampledWeightedColors(
-    imageFile,
-    numColors
-  );
-  */
 
   console.time("modifiedMedianCutQuantization");
   const mmcqColors = await modifiedMedianCutQuantization(imageFile, numColors);
@@ -47,21 +38,22 @@ async function getPalettes(imageFile, numColors) {
   );
   console.timeEnd("getMmcqKmeansWeightedColors");
 
+  console.time("rgbQuantColors");
+  const rgbQuant = await rgbQuantColors(imageFile, numColors);
+  console.timeEnd("rgbQuantColors");
+
   return [
     { name: "K-means Colors", colors: kmeansColors },
     { name: "K-means Weighted Colors", colors: kmeansWeightedColors },
-    /*
-    { name: "K-means Sampled Colors", colors: kmeansSampledColors },
-    {
-      name: "K-means Sampled Weighted Colors",
-      colors: kmeansSampledWeightedColors,
-    },
-    */
     { name: "MMCQ Colors", colors: mmcqColors },
     { name: "MMCQ K-means Colors", colors: mmcqKmeansColors },
     {
       name: "MMCQ K-means Weighted Colors",
       colors: mmcqKmeansWeightedColors,
+    },
+    {
+      name: "RGB Quant Colors",
+      colors: rgbQuant,
     },
   ];
 }
@@ -74,7 +66,7 @@ export async function generateHtml(images, numColors) {
     const palettes = await getPalettes(imageFile, numColors);
 
     const imageHtml = `
-      <div class="columns">
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/${image.filename}">
@@ -131,19 +123,25 @@ export async function generateHtml(images, numColors) {
               MMCQ (modified median cut quantization) algorithm from
               <a href="http://www.leptonica.org/color-quantization.html">Leptonica library</a>
               implemented in <a href="https://github.com/olivierlesnicki/quantize">quantize</a> Javascript package.
+              (<a href="https://github.com/olivierlesnicki/quantize">quantize</a> is the code used in
+              the <a href="https://github.com/lokesh/color-thief">Color Thief</a> library.)
+              RGB Quant using <a href="https://github.com/leeoniya/RgbQuant.js">RgbQuant.js</a> with
+              <a href="https://github.com/leeoniya/RgbQuant.js/compare/master...Hypfer:RgbQuant.js:patch-2">this patch</a>.
             </p>
             <p class="content">
-              Naive, unoptimized implementations with some help from ChatGPT.
-              Regardless, MMCQ seems much faster than K-means.
+              Naive, unoptimized, simplistic implementations on my part.
+              Regardless, MMCQ seems much faster than K-means and works well.
+              RGB Quant is a bit slow but seems to work well.
             </p>
             <p class="content">
               Typical run:
               <ul>
-                <li>K-means: 3.684s</li>
-                <li>K-means with weighting: 5.949s</li>
-                <li>MMCQ: 239.532ms (Note this is ms, not s!)</li>
-                <li>MMCQ then K-means: 6.201s</li>
-                <li>MMCQ then K-means with weighting: 8.603s</li>
+                <li>K-means: 4.919s</li>
+                <li>K-means with weighting: 7.493s</li>
+                <li>MMCQ: 250.963ms (Note this is ms, not s!)</li>
+                <li>MMCQ then K-means: 9.285s</li>
+                <li>MMCQ then K-means with weighting: 12.407s</li>
+                <li>RGB Quant: 6.485s</li>
               </ul>
             </p>
           </div>

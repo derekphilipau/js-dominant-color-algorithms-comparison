@@ -20,26 +20,32 @@
               MMCQ (modified median cut quantization) algorithm from
               <a href="http://www.leptonica.org/color-quantization.html">Leptonica library</a>
               implemented in <a href="https://github.com/olivierlesnicki/quantize">quantize</a> Javascript package.
+              (<a href="https://github.com/olivierlesnicki/quantize">quantize</a> is the code used in
+              the <a href="https://github.com/lokesh/color-thief">Color Thief</a> library.)
+              RGB Quant using <a href="https://github.com/leeoniya/RgbQuant.js">RgbQuant.js</a> with
+              <a href="https://github.com/leeoniya/RgbQuant.js/compare/master...Hypfer:RgbQuant.js:patch-2">this patch</a>.
             </p>
             <p class="content">
-              Naive, unoptimized implementations with some help from ChatGPT.
+              Naive, unoptimized, simplistic implementations on my part.
               Regardless, MMCQ seems much faster than K-means.
+              RGB Quant is a bit slower but seems to work well.
             </p>
             <p class="content">
               Typical run:
               <ul>
-                <li>K-means: 3.684s</li>
-                <li>K-means with weighting: 5.949s</li>
-                <li>MMCQ: 239.532ms (Note this is ms, not s!)</li>
-                <li>MMCQ then K-means: 6.201s</li>
-                <li>MMCQ then K-means with weighting: 8.603s</li>
+                <li>K-means: 4.919s</li>
+                <li>K-means with weighting: 7.493s</li>
+                <li>MMCQ: 250.963ms (Note this is ms, not s!)</li>
+                <li>MMCQ then K-means: 9.285s</li>
+                <li>MMCQ then K-means with weighting: 12.407s</li>
+                <li>RGB Quant: 6.485s</li>
               </ul>
             </p>
           </div>
         </section>
         <section class="container">
-          
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/2018.1_DM.13156.jpg">
@@ -234,11 +240,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #bababa; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bababa</div>
+                          </div>
+<div>
+                            <div style="background-color: #f0f0f0; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#f0f0f0</div>
+                          </div>
+<div>
+                            <div style="background-color: #827467; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#827467</div>
+                          </div>
+<div>
+                            <div style="background-color: #a08f7d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a08f7d</div>
+                          </div>
+<div>
+                            <div style="background-color: #091954; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#091954</div>
+                          </div>
+<div>
+                            <div style="background-color: #3d519a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#3d519a</div>
+                          </div>
+<div>
+                            <div style="background-color: #596db2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#596db2</div>
+                          </div>
+<div>
+                            <div style="background-color: #bfd4ff; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfd4ff</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/2019.11_view01_SC.jpg">
@@ -433,11 +476,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #000000; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#000000</div>
+                          </div>
+<div>
+                            <div style="background-color: #ffffff; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ffffff</div>
+                          </div>
+<div>
+                            <div style="background-color: #662f35; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#662f35</div>
+                          </div>
+<div>
+                            <div style="background-color: #eec72e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#eec72e</div>
+                          </div>
+<div>
+                            <div style="background-color: #60613f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#60613f</div>
+                          </div>
+<div>
+                            <div style="background-color: #a3a9a7; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a3a9a7</div>
+                          </div>
+<div>
+                            <div style="background-color: #d0d4d3; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d0d4d3</div>
+                          </div>
+<div>
+                            <div style="background-color: #4d67d6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4d67d6</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/2021.45_PS11 (1).jpg">
@@ -632,11 +712,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #252525; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#252525</div>
+                          </div>
+<div>
+                            <div style="background-color: #c44a35; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c44a35</div>
+                          </div>
+<div>
+                            <div style="background-color: #615c56; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#615c56</div>
+                          </div>
+<div>
+                            <div style="background-color: #a39b90; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a39b90</div>
+                          </div>
+<div>
+                            <div style="background-color: #dfae47; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#dfae47</div>
+                          </div>
+<div>
+                            <div style="background-color: #cdc5b8; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cdc5b8</div>
+                          </div>
+<div>
+                            <div style="background-color: #ebedec; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ebedec</div>
+                          </div>
+<div>
+                            <div style="background-color: #687eca; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#687eca</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/CUR.2014.37_Nicola_Vassell_photograph.jpg">
@@ -831,11 +948,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #000000; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#000000</div>
+                          </div>
+<div>
+                            <div style="background-color: #840000; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#840000</div>
+                          </div>
+<div>
+                            <div style="background-color: #ec0549; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ec0549</div>
+                          </div>
+<div>
+                            <div style="background-color: #ff3b00; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ff3b00</div>
+                          </div>
+<div>
+                            <div style="background-color: #d5cdb6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d5cdb6</div>
+                          </div>
+<div>
+                            <div style="background-color: #fffdf1; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#fffdf1</div>
+                          </div>
+<div>
+                            <div style="background-color: #007950; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#007950</div>
+                          </div>
+<div>
+                            <div style="background-color: #868688; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#868688</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/CUR.2015.72.2_Magnin-A_photograph.jpg">
@@ -1030,11 +1184,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #3d2b29; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#3d2b29</div>
+                          </div>
+<div>
+                            <div style="background-color: #a2676d; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a2676d</div>
+                          </div>
+<div>
+                            <div style="background-color: #bdaa43; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bdaa43</div>
+                          </div>
+<div>
+                            <div style="background-color: #5b5837; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5b5837</div>
+                          </div>
+<div>
+                            <div style="background-color: #8d8e52; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8d8e52</div>
+                          </div>
+<div>
+                            <div style="background-color: #50709f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#50709f</div>
+                          </div>
+<div>
+                            <div style="background-color: #ccc9dc; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ccc9dc</div>
+                          </div>
+<div>
+                            <div style="background-color: #ecebf3; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ecebf3</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/TL2020.7_PS11.jpg">
@@ -1229,11 +1420,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #4a3c3b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#4a3c3b</div>
+                          </div>
+<div>
+                            <div style="background-color: #8e4f3e; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8e4f3e</div>
+                          </div>
+<div>
+                            <div style="background-color: #c45e36; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c45e36</div>
+                          </div>
+<div>
+                            <div style="background-color: #b68a8b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b68a8b</div>
+                          </div>
+<div>
+                            <div style="background-color: #d5b348; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d5b348</div>
+                          </div>
+<div>
+                            <div style="background-color: #586d98; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#586d98</div>
+                          </div>
+<div>
+                            <div style="background-color: #d7ccdd; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d7ccdd</div>
+                          </div>
+<div>
+                            <div style="background-color: #262425; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#262425</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/TL2021.66_PS11.jpg">
@@ -1428,11 +1656,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #757575; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#757575</div>
+                          </div>
+<div>
+                            <div style="background-color: #999999; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#999999</div>
+                          </div>
+<div>
+                            <div style="background-color: #bfbfbf; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#bfbfbf</div>
+                          </div>
+<div>
+                            <div style="background-color: #2e1a1b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#2e1a1b</div>
+                          </div>
+<div>
+                            <div style="background-color: #5e5244; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5e5244</div>
+                          </div>
+<div>
+                            <div style="background-color: #c18e19; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#c18e19</div>
+                          </div>
+<div>
+                            <div style="background-color: #e4b720; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e4b720</div>
+                          </div>
+<div>
+                            <div style="background-color: #fffffb; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#fffffb</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/CUR.2017.25.1_KrisGraves_photograph.jpg">
@@ -1627,11 +1892,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #9d3033; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#9d3033</div>
+                          </div>
+<div>
+                            <div style="background-color: #5a5140; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5a5140</div>
+                          </div>
+<div>
+                            <div style="background-color: #a25d34; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a25d34</div>
+                          </div>
+<div>
+                            <div style="background-color: #d79d31; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d79d31</div>
+                          </div>
+<div>
+                            <div style="background-color: #d1c3b6; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d1c3b6</div>
+                          </div>
+<div>
+                            <div style="background-color: #141915; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#141915</div>
+                          </div>
+<div>
+                            <div style="background-color: #f0f4f5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#f0f4f5</div>
+                          </div>
+<div>
+                            <div style="background-color: #87bedd; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#87bedd</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/1999.13.1_PS4.jpg">
@@ -1826,11 +2128,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #1b1a18; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#1b1a18</div>
+                          </div>
+<div>
+                            <div style="background-color: #757326; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#757326</div>
+                          </div>
+<div>
+                            <div style="background-color: #92903b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#92903b</div>
+                          </div>
+<div>
+                            <div style="background-color: #cccbac; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#cccbac</div>
+                          </div>
+<div>
+                            <div style="background-color: #434254; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#434254</div>
+                          </div>
+<div>
+                            <div style="background-color: #6c6c86; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#6c6c86</div>
+                          </div>
+<div>
+                            <div style="background-color: #8686a2; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#8686a2</div>
+                          </div>
+<div>
+                            <div style="background-color: #a59fad; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a59fad</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/CUR.2003.37_Yossi_Milo_Gallery_photograph.jpg">
@@ -2025,11 +2364,48 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #e7bdb1; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e7bdb1</div>
+                          </div>
+<div>
+                            <div style="background-color: #e6e0d4; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e6e0d4</div>
+                          </div>
+<div>
+                            <div style="background-color: #5b663b; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#5b663b</div>
+                          </div>
+<div>
+                            <div style="background-color: #ffffed; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#ffffed</div>
+                          </div>
+<div>
+                            <div style="background-color: #2c3c1f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#2c3c1f</div>
+                          </div>
+<div>
+                            <div style="background-color: #83ac74; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#83ac74</div>
+                          </div>
+<div>
+                            <div style="background-color: #b8c8c5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b8c8c5</div>
+                          </div>
+<div>
+                            <div style="background-color: #a0688f; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#a0688f</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
 
-      <div class="columns">
+
+      <div class="columns mb-6">
         <div class="column is-one-third">
           <figure class="image">
             <img src="img/CUR.2012.73a-b_Lehman_Maupin_photo_LM15960.jpg">
@@ -2224,10 +2600,46 @@
                           </div>
                     </div>
                   </div>
+<div class="pb-3">
+                    <h4 class="subtitle mb-1">RGB Quant Colors</h4>
+                    <div style="display: flex;">
+                    <div>
+                            <div style="background-color: #312d2a; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#312d2a</div>
+                          </div>
+<div>
+                            <div style="background-color: #966733; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#966733</div>
+                          </div>
+<div>
+                            <div style="background-color: #d69300; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#d69300</div>
+                          </div>
+<div>
+                            <div style="background-color: #f2c700; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#f2c700</div>
+                          </div>
+<div>
+                            <div style="background-color: #b0b0ae; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#b0b0ae</div>
+                          </div>
+<div>
+                            <div style="background-color: #e4e6e5; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#e4e6e5</div>
+                          </div>
+<div>
+                            <div style="background-color: #517689; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#517689</div>
+                          </div>
+<div>
+                            <div style="background-color: #57acd3; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#57acd3</div>
+                          </div>
+                    </div>
+                  </div>
         </div>
       </div>
-    
+
         </section>
       </body>
     </html>
-  

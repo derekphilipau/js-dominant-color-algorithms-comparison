@@ -1,8 +1,7 @@
 import quantize from "quantize";
 import { getKmeansColors, getKmeansWeightedColors } from "./kmeansColors.js";
 import { getPixelsAsync, getRgbDataArray } from "./util/pixels.js";
-import ndarray from "ndarray";
-import { rgbToHsl, hslToHex } from "./util/color.js";
+import { rgbToHsl } from "./util/color.js";
 
 export async function getMmcqKmeansColors(imageUrlOrPath, numColors) {
   return process(imageUrlOrPath, numColors, false);
