@@ -8,11 +8,11 @@
  */
 import quantize from "quantize";
 import { getPixelsAsync, getRgbDataArray } from "./util/pixels.js";
-import { rgbToHex } from "./util/color.js";
+import convert from "color-convert";
 
 export async function modifiedMedianCutQuantization(imageUrlOrPath, numColors) {
   const pixels = await getPixelsAsync(imageUrlOrPath);
   const dataArray = getRgbDataArray(pixels);
   const palette = quantize(dataArray, numColors + 1).palette();
-  return palette.map((color) => rgbToHex(color[0], color[1], color[2]));
+  return palette.map((color) => convert.rgb.hex(color[0], color[1], color[2]));
 }

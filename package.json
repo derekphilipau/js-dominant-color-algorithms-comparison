@@ -1,5 +1,5 @@
 {
-  "name": "dominant-color-algorithms",
+  "name": "js-dominant-color-algorithms-comparison",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "canvas": "^2.11.0",
+    "color-convert": "^2.0.1",
     "get-pixels": "^3.3.3",
     "hsl-to-hex": "^1.0.0",
     "kmeans-js": "^0.1.2",
@@ -19,6 +20,7 @@
     "ml-matrix": "^6.10.4",
     "ndarray": "^1.0.19",
     "node-kmeans": "^1.1.9",
+    "perf_hooks": "^0.0.1",
     "quantize": "^1.0.2",
     "rgbquant": "^1.1.2",
     "save-pixels": "^2.3.6",

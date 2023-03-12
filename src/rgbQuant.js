@@ -11,7 +11,7 @@ import fs from 'fs';
 import { createCanvas, Image } from 'canvas';
 import RgbQuant from 'rgbquant';
 import { promisify } from 'util';
-import { rgbToHex } from "./util/color.js";
+import convert from 'color-convert';
 
 const readFileAsync = promisify(fs.readFile);
 
@@ -31,5 +31,5 @@ export async function rgbQuantColors(imageUrlOrPath, numColors) {
   q.sample(can);
   const palette = q.palette(true);
   const out = q.reduce(can);
-  return palette.map((color) => rgbToHex(color[0], color[1], color[2]));
+  return palette.map((color) => convert.rgb.hex(color[0], color[1], color[2]));
 }

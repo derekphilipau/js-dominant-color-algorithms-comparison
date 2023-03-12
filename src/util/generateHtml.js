@@ -1,61 +1,38 @@
 import { writeFileSync } from "fs";
-import {
-  getKmeansColors,
-  getKmeansSampledColors,
-  getKmeansSampledWeightedColors,
-  getKmeansWeightedColors,
-} from "../kmeansColors.js";
 import { modifiedMedianCutQuantization } from "../mmcqColors.js";
-import {
-  getMmcqKmeansColors,
-  getMmcqKmeansWeightedColors,
-} from "../mmcqKmeansColors.js";
+import { getMmcqKmeansColors } from "../mmcqKmeansColors.js";
 import { rgbQuantColors } from "../rgbQuant.js";
+import { getMmcqHierarchicalClustering } from "../mmcqHierarchicalColors.js";
+import { getKmeansSimpleColors } from "../kmeansSimple.js";
+import { performance } from "perf_hooks";
 
 async function getPalettes(imageFile, numColors) {
-  console.time("getKmeansColors");
-  const kmeansColors = await getKmeansColors(imageFile, numColors);
-  console.timeEnd("getKmeansColors");
-  console.time("getKmeansWeightedColors");
-  const kmeansWeightedColors = await getKmeansWeightedColors(
-    imageFile,
-    numColors
-  );
-  console.timeEnd("getKmeansWeightedColors");
-
-  console.time("modifiedMedianCutQuantization");
-  const mmcqColors = await modifiedMedianCutQuantization(imageFile, numColors);
-  console.timeEnd("modifiedMedianCutQuantization");
-
-  console.time("getMmcqKmeansColors");
-  const mmcqKmeansColors = await getMmcqKmeansColors(imageFile, numColors);
-  console.timeEnd("getMmcqKmeansColors");
-
-  console.time("getMmcqKmeansWeightedColors");
-  const mmcqKmeansWeightedColors = await getMmcqKmeansWeightedColors(
-    imageFile,
-    numColors
-  );
-  console.timeEnd("getMmcqKmeansWeightedColors");
-
-  console.time("rgbQuantColors");
-  const rgbQuant = await rgbQuantColors(imageFile, numColors);
-  console.timeEnd("rgbQuantColors");
-
-  return [
-    { name: "K-means Colors", colors: kmeansColors },
-    { name: "K-means Weighted Colors", colors: kmeansWeightedColors },
-    { name: "MMCQ Colors", colors: mmcqColors },
-    { name: "MMCQ K-means Colors", colors: mmcqKmeansColors },
-    {
-      name: "MMCQ K-means Weighted Colors",
-      colors: mmcqKmeansWeightedColors,
-    },
-    {
-      name: "RGB Quant Colors",
-      colors: rgbQuant,
-    },
+  const functions = [
+    { name: "K-means Simple RGB no sampling", func: getKmeansSimpleColors, args: [imageFile, numColors, 1, false] },
+    { name: "K-means Simple HSV", func: getKmeansSimpleColors, args: [imageFile, numColors, true] },
+    { name: "K-means Simple RGB sampled 1/2", func: getKmeansSimpleColors, args: [imageFile, numColors, 2, false] },
+    { name: "K-means Simple RGB sampled 1/4", func: getKmeansSimpleColors, args: [imageFile, numColors, 4, false] },
+    { name: "MMCQ", func: modifiedMedianCutQuantization, args: [imageFile, numColors] },
+    { name: "Two steps: MMCQ then K-means", func: getMmcqKmeansColors, args: [imageFile, numColors] },
+    { name: "Two steps: MMCQ then Hierarchical Clustering", func: getMmcqHierarchicalClustering, args: [imageFile, numColors] },
+    { name: "RGB Quant", func: rgbQuantColors, args: [imageFile, numColors] },
   ];
+
+  const results = [];
+  for (const f of functions) {
+    const startTime = performance.now();
+    const colors = await f.func(...f.args);
+    const endTime = performance.now();
+    const time = endTime - startTime;
+    results.push({ name: f.name, colors, time });
+    console.log(`${f.name} took ${getSeconds(time)}s`);
+  }
+
+  return results;
+}
+
+function getSeconds(ms) {
+  return Math.round((ms / 1000) * 100) / 100;
 }
 
 export async function generateHtml(images, numColors) {
@@ -77,24 +54,24 @@ export async function generateHtml(images, numColors) {
         </div>
         <div class="column is-two-thirds">
           ${palettes
-            .map(
-              (palette) =>
-                `<div class="pb-3">
-                    <h4 class="subtitle mb-1">${palette.name}</h4>
+        .map(
+          (palette) =>
+            `<div class="pb-3">
+                    <h4 class="subtitle mb-1">${palette.name} (${getSeconds(palette.time)}s)</h4>
                     <div style="display: flex;">
                     ${palette.colors
-                      .map(
-                        (color) =>
-                          `<div>
-                            <div style="background-color: ${color}; height: 40px; width: 80px;"></div>
-                            <div class="is-size-7">${color}</div>
+              .map(
+                (color) =>
+                  `<div>
+                            <div style="background-color: #${color}; height: 40px; width: 80px;"></div>
+                            <div class="is-size-7">#${color}</div>
                           </div>`
-                      )
-                      .join("\n")}
+              )
+              .join("\n")}
                     </div>
                   </div>`
-            )
-            .join("\n")}
+        )
+        .join("\n")}
         </div>
       </div>
     `;
@@ -127,22 +104,6 @@ export async function generateHtml(images, numColors) {
               the <a href="https://github.com/lokesh/color-thief">Color Thief</a> library.)
               RGB Quant using <a href="https://github.com/leeoniya/RgbQuant.js">RgbQuant.js</a> with
               <a href="https://github.com/leeoniya/RgbQuant.js/compare/master...Hypfer:RgbQuant.js:patch-2">this patch</a>.
-            </p>
-            <p class="content">
-              Naive, unoptimized, simplistic implementations on my part.
-              Regardless, MMCQ seems much faster than K-means and works well.
-              RGB Quant is a bit slow but seems to work well.
-            </p>
-            <p class="content">
-              Typical run:
-              <ul>
-                <li>K-means: 4.919s</li>
-                <li>K-means with weighting: 7.493s</li>
-                <li>MMCQ: 250.963ms (Note this is ms, not s!)</li>
-                <li>MMCQ then K-means: 9.285s</li>
-                <li>MMCQ then K-means with weighting: 12.407s</li>
-                <li>RGB Quant: 6.485s</li>
-              </ul>
             </p>
           </div>
         </section>
