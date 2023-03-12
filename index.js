@@ -90,7 +90,7 @@ const images = [
   },
 ];
 
-const imagesx = [
+const testimages = [
   {
     filename: "2018.1_DM.13156.jpg",
     title: "Lot 043017 (Multiflora, Radiant Blue)",
@@ -101,4 +101,4 @@ const imagesx = [
   },
 ]
 
-generateHtml(imagesx, 8);
+generateHtml(images, 8);

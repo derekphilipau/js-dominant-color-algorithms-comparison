@@ -5,10 +5,13 @@ import { rgbQuantColors } from "../rgbQuant.js";
 import { getMmcqHierarchicalClustering } from "../mmcqHierarchicalColors.js";
 import { getKmeansSimpleColors } from "../kmeansSimple.js";
 import { getHierarchicalClustering } from "../hierarchicalColors.js";
+import { getMeanShiftClustering } from "../meanShiftColors.js";
 import { performance } from "perf_hooks";
 
 async function getPalettes(imageFile, numColors) {
   const functions = [
+    { name: "Hierarchical Clustering", func: getHierarchicalClustering, args: [imageFile, numColors] },
+    { name: "Mean Shift Clustering", func: getMeanShiftClustering, args: [imageFile, numColors] },
     { name: "K-means Simple RGB no sampling", func: getKmeansSimpleColors, args: [imageFile, numColors, 1, false] },
     { name: "K-means Simple HSV", func: getKmeansSimpleColors, args: [imageFile, numColors, true] },
     { name: "K-means Simple RGB sampled 1/2", func: getKmeansSimpleColors, args: [imageFile, numColors, 2, false] },
@@ -16,7 +19,6 @@ async function getPalettes(imageFile, numColors) {
     { name: "MMCQ", func: modifiedMedianCutQuantization, args: [imageFile, numColors] },
     { name: "Two steps: MMCQ then K-means", func: getMmcqKmeansColors, args: [imageFile, numColors] },
     { name: "Two steps: MMCQ then Hierarchical Clustering", func: getMmcqHierarchicalClustering, args: [imageFile, numColors] },
-    // { name: "Hierarchical Clustering", func: getHierarchicalClustering, args: [imageFile, numColors] },
     { name: "RGB Quant", func: rgbQuantColors, args: [imageFile, numColors] },
   ];
 
