@@ -101,4 +101,4 @@ const imagesx = [
   },
 ]
 
-generateHtml(images, 8);
+generateHtml(imagesx, 8);

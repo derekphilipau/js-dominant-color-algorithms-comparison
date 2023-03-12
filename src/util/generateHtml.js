@@ -4,6 +4,7 @@ import { getMmcqKmeansColors } from "../mmcqKmeansColors.js";
 import { rgbQuantColors } from "../rgbQuant.js";
 import { getMmcqHierarchicalClustering } from "../mmcqHierarchicalColors.js";
 import { getKmeansSimpleColors } from "../kmeansSimple.js";
+import { getHierarchicalClustering } from "../hierarchicalColors.js";
 import { performance } from "perf_hooks";
 
 async function getPalettes(imageFile, numColors) {
@@ -15,6 +16,7 @@ async function getPalettes(imageFile, numColors) {
     { name: "MMCQ", func: modifiedMedianCutQuantization, args: [imageFile, numColors] },
     { name: "Two steps: MMCQ then K-means", func: getMmcqKmeansColors, args: [imageFile, numColors] },
     { name: "Two steps: MMCQ then Hierarchical Clustering", func: getMmcqHierarchicalClustering, args: [imageFile, numColors] },
+    // { name: "Hierarchical Clustering", func: getHierarchicalClustering, args: [imageFile, numColors] },
     { name: "RGB Quant", func: rgbQuantColors, args: [imageFile, numColors] },
   ];
 
