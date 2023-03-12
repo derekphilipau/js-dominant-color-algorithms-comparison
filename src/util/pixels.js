@@ -69,19 +69,23 @@ export function getRgbDataArray(pixels) {
   return dataArray;
 }
 
-/*
-export function getFlatPixelArray(pixels, skipRatio = 1, isHsv) {
+export function getPixelArray(pixels, skipRatio = 1, isHsv = false) {
   const pixelArray = [];
   for (let i = 0; i < pixels.shape[0]; i += skipRatio) {
+    const row = [];
     for (let j = 0; j < pixels.shape[1]; j += skipRatio) {
       const idx = (i * pixels.shape[1] + j) * pixels.shape[2];
-      if (typeof pixels[idx + 3] === 'undefined' || pixels[idx + 3] >= 125) // Color thief: If pixel is mostly opaque and not white
-        pixelArray.push([pixels.data[idx], pixels.data[idx + 1], pixels.data[idx + 2]]);
+      const [r, g, b, a] = [pixels.data[idx], pixels.data[idx + 1], pixels.data[idx + 2], pixels.data[idx + 3]];
+      if (typeof a === 'undefined' || a >= 125) { // Color thief: If pixel is mostly opaque and not white
+        if (isHsv) row.push(convert.rgb.hsv(r, g, b))
+        else row.push([r, g, b]);
+      }
     }
+    pixelArray.push(row);
   }
   return pixelArray;
 }
-*/
+
 export function getFlatPixelArray(pixels, skipRatio = 1, isHsv = false) {
   const pixelArray = [];
   for (let i = 0; i < pixels.shape[0]; i += skipRatio) {
@@ -114,6 +118,7 @@ export function getHslDataArray(pixels) {
   }
   return dataArray;
 }
+
 
 export async function saveImage(pixels, filename) {
   return new Promise((resolve, reject) => {

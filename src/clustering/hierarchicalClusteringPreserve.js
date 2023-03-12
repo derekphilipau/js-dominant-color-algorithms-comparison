@@ -61,8 +61,11 @@ export function hierarchicalClusteringPreserve(points, numClusters) {
     }
   }
 
+  // Sort clusters by size
+  const sortedClusters = clusters.sort((a, b) => a.length - b.length);
+
   // Return final clusters
-  return clusters.map((cluster) => {
+  return sortedClusters.map((cluster) => {
     let minDistance = Infinity;
     let closestPoint;
     const clusterPoints = cluster.map((pointIndex) => points[pointIndex]);

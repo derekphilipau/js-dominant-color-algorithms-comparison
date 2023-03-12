@@ -61,15 +61,15 @@ export async function generateHtml(images, numColors) {
         .map(
           (palette) =>
             `<div class="pb-3">
-                    <h4 class="subtitle mb-1">${palette.name} (${getSeconds(palette.time)}s)</h4>
-                    <div style="display: flex;">
-                    ${palette.colors
+                <h4 class="subtitle mb-1">${palette.name} (${getSeconds(palette.time)}s)</h4>
+                <div style="display: flex;">
+                ${palette.colors
               .map(
                 (color) =>
                   `<div>
-                            <div style="background-color: #${color}; height: 40px; width: 80px;"></div>
-                            <div class="is-size-7">#${color}</div>
-                          </div>`
+                    <div style="background-color: #${color}; height: 40px; width: 68px;"></div>
+                    <div class="is-size-7">#${color}</div>
+                  </div>`
               )
               .join("\n")}
                     </div>

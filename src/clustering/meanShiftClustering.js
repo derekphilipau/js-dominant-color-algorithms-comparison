@@ -62,19 +62,25 @@ export function meanShiftClustering(points, numClusters) {
   }
 
   if (centroids.length > numClusters) {
-    const topCentroids = centroids.slice(0, numClusters);
     const assignmentsMap = new Map();
-    for (let i = 0; i < topCentroids.length; i++) {
+    for (let i = 0; i < centroids.length; i++) {
       assignmentsMap.set(i, []);
     }
     for (let i = 0; i < points.length; i++) {
       const assignment = assignments[i];
-      if (assignment >= 0 && assignment < numClusters) {
+      if (assignment >= 0 && assignment < centroids.length) {
         assignmentsMap.get(assignment).push(points[i]);
       }
     }
+    const sortedCentroids = [...centroids];
+    sortedCentroids.sort((a, b) => {
+      const aIndex = centroids.indexOf(a);
+      const bIndex = centroids.indexOf(b);
+      return assignmentsMap.get(bIndex).length - assignmentsMap.get(aIndex).length;
+    });
+    const topCentroids = sortedCentroids.slice(0, numClusters);
     for (let i = 0; i < topCentroids.length; i++) {
-      const clusterPoints = assignmentsMap.get(i);
+      const clusterPoints = assignmentsMap.get(centroids.indexOf(topCentroids[i]));
       if (clusterPoints.length > 0) {
         const sum = clusterPoints.reduce((acc, val) => {
           acc[0] += val[0];
