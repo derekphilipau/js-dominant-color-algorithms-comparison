@@ -10,25 +10,29 @@ import { performance } from "perf_hooks";
 
 async function getPalettes(imageFile, numColors) {
   const functions = [
-    { name: "Hierarchical Clustering", func: getHierarchicalClustering, args: [imageFile, numColors] },
-    { name: "Mean Shift Clustering", func: getMeanShiftClustering, args: [imageFile, numColors] },
-    { name: "K-means Simple RGB no sampling", func: getKmeansSimpleColors, args: [imageFile, numColors, 1, false] },
-    { name: "K-means Simple HSV", func: getKmeansSimpleColors, args: [imageFile, numColors, true] },
-    { name: "K-means Simple RGB sampled 1/2", func: getKmeansSimpleColors, args: [imageFile, numColors, 2, false] },
-    { name: "K-means Simple RGB sampled 1/4", func: getKmeansSimpleColors, args: [imageFile, numColors, 4, false] },
-    { name: "MMCQ", func: modifiedMedianCutQuantization, args: [imageFile, numColors] },
-    { name: "Two steps: MMCQ then K-means", func: getMmcqKmeansColors, args: [imageFile, numColors] },
-    { name: "Two steps: MMCQ then Hierarchical Clustering", func: getMmcqHierarchicalClustering, args: [imageFile, numColors] },
-    { name: "RGB Quant", func: rgbQuantColors, args: [imageFile, numColors] },
+    { name: "Hierarchical Clustering", func: getHierarchicalClustering, args: [] },
+    { name: "Mean Shift Clustering", func: getMeanShiftClustering, args: [] },
+    { name: "K-means Simple RGB no sampling", func: getKmeansSimpleColors, args: [1, false] },
+    { name: "K-means Simple HSV", func: getKmeansSimpleColors, args: [true] },
+    { name: "K-means Simple RGB sampled 1/2", func: getKmeansSimpleColors, args: [2, false] },
+    { name: "K-means Simple RGB sampled 1/4", func: getKmeansSimpleColors, args: [4, false] },
+    { name: "MMCQ", func: modifiedMedianCutQuantization, args: [] },
+    { name: "Two steps: MMCQ then K-means", func: getMmcqKmeansColors, args: [] },
+    { name: "Two steps: MMCQ then Hierarchical Clustering", func: getMmcqHierarchicalClustering, args: [] },
+    { name: "RGB Quant", func: rgbQuantColors, args: [] },
   ];
 
   const results = [];
   for (const f of functions) {
     const startTime = performance.now();
-    const colors = await f.func(...f.args);
+    const palettes = [
+      await f.func(imageFile, numColors, ...f.args),
+      await f.func(imageFile, numColors/2, ...f.args),
+      await f.func(imageFile, numColors/4, ...f.args),
+    ]
     const endTime = performance.now();
     const time = endTime - startTime;
-    results.push({ name: f.name, colors, time });
+    results.push({ name: f.name, palettes, time });
     console.log(`${f.name} took ${getSeconds(time)}s`);
   }
 
@@ -44,7 +48,7 @@ export async function generateHtml(images, numColors) {
   for (const image of images) {
     const imageFile = `./img/${image.filename}`;
 
-    const palettes = await getPalettes(imageFile, numColors);
+    const results = await getPalettes(imageFile, numColors);
 
     const imageHtml = `
       <div class="columns mb-6">
@@ -57,23 +61,27 @@ export async function generateHtml(images, numColors) {
           </figure>
         </div>
         <div class="column is-two-thirds">
-          ${palettes
+          ${results
         .map(
-          (palette) =>
-            `<div class="pb-3">
-                <h4 class="subtitle mb-1">${palette.name} (${getSeconds(palette.time)}s)</h4>
-                <div style="display: flex;">
-                ${palette.colors
-              .map(
-                (color) =>
-                  `<div>
-                    <div style="background-color: #${color}; height: 40px; width: 68px;"></div>
-                    <div class="is-size-7">#${color}</div>
-                  </div>`
-              )
-              .join("\n")}
-                    </div>
-                  </div>`
+          (result) =>
+            `<div class="pb-1">
+                <h4 class="mb-1 is-size-6">${result.name} (${getSeconds(result.time)}s)</h4>
+                <div class="is-flex">
+                ${result.palettes
+                  .map(
+                    (palette) =>
+                      `<div class="is-flex mr-6">
+                      ${palette
+                        .map(
+                          (color) =>
+                            `<div style="background-color: #${color}; height: 60px; width: 30px;"></div>`
+                        )
+                        .join("\n")}
+                      </div>`
+                  )
+                  .join("\n")}
+                </div>
+              </div>`
         )
         .join("\n")}
         </div>

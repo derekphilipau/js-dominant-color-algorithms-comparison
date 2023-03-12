@@ -11,8 +11,9 @@ import { getPixelsAsync, getRgbDataArray } from "./util/pixels.js";
 import convert from "color-convert";
 
 export async function modifiedMedianCutQuantization(imageUrlOrPath, numColors) {
+  const totalNumColors = numColors > 4 ? numColors + 1 : numColors;
   const pixels = await getPixelsAsync(imageUrlOrPath);
   const dataArray = getRgbDataArray(pixels);
-  const palette = quantize(dataArray, numColors + 1).palette();
+  const palette = quantize(dataArray, totalNumColors).palette();
   return palette.map((color) => convert.rgb.hex(color[0], color[1], color[2]));
 }
