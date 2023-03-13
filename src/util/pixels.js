@@ -76,10 +76,10 @@ export function getPixelArray(pixels, skipRatio = 1, isHsv = false) {
     for (let j = 0; j < pixels.shape[1]; j += skipRatio) {
       const idx = (i * pixels.shape[1] + j) * pixels.shape[2];
       const [r, g, b, a] = [pixels.data[idx], pixels.data[idx + 1], pixels.data[idx + 2], pixels.data[idx + 3]];
-      if (typeof a === 'undefined' || a >= 125) { // Color thief: If pixel is mostly opaque and not white
-        if (isHsv) row.push(convert.rgb.hsv(r, g, b))
-        else row.push([r, g, b]);
-      }
+      //if (typeof a === 'undefined' || a >= 125) { // Color thief: If pixel is mostly opaque and not white
+      if (isHsv) row.push(convert.rgb.hsv(r, g, b))
+      else row.push([r, g, b]);
+      //}
     }
     pixelArray.push(row);
   }
@@ -101,24 +101,36 @@ export function getFlatPixelArray(pixels, skipRatio = 1, isHsv = false) {
   return pixelArray;
 }
 
-export function getHslDataArray(pixels) {
-  const dataArray = [];
-  for (let i = 0; i < pixels.shape[0]; i++) {
+/**
+ * Downsample didn't work as well as just skipping over pixels.
+ */
+export function downsample(pixels, factor) {
+  const width = pixels[0].length;
+  const height = pixels.length;
+  const newWidth = Math.floor(width / factor);
+  const newHeight = Math.floor(height / factor);
+  const result = [];
+  for (let i = 0; i < newHeight; i++) {
     const row = [];
-    for (let j = 0; j < pixels.shape[1]; j++) {
-      const idx = (i * pixels.shape[1] + j) * pixels.shape[2];
-      const [h, s, l] = convert.rgb.hsl(
-        pixels.data[idx],
-        pixels.data[idx + 1],
-        pixels.data[idx + 2],
-      );
-      row.push(h, s, l);
+    for (let j = 0; j < newWidth; j++) {
+      let sumR = 0, sumG = 0, sumB = 0;
+      for (let k = 0; k < factor; k++) {
+        for (let l = 0; l < factor; l++) {
+          const pixel = pixels[i * factor + k][j * factor + l];
+          sumR += pixel[0];
+          sumG += pixel[1];
+          sumB += pixel[2];
+        }
+      }
+      const avgR = Math.floor(sumR / (factor * factor));
+      const avgG = Math.floor(sumG / (factor * factor));
+      const avgB = Math.floor(sumB / (factor * factor));
+      row.push([avgR, avgG, avgB]);
     }
-    dataArray.push(row);
+    result.push(row);
   }
-  return dataArray;
+  return result.flat(); // don't need 2d array
 }
-
 
 export async function saveImage(pixels, filename) {
   return new Promise((resolve, reject) => {

@@ -101,6 +101,9 @@ export function meanShiftClustering(points, numClusters) {
   return centroids;
 }
 
+/**
+ * This is just a guess, not sure how to calculate bandwidth for image data.
+ */
 function calculateBandwidth(points) {
   const numDimensions = 3; // RGB has 3 dimensions
   const numPoints = points.length;

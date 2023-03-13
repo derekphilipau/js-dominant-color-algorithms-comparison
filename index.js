@@ -1,4 +1,4 @@
-import { generateHtml } from "./src/util/generateHtml.js";
+import { generateHtml } from "./src/html/generateHtml.js";
 
 const images = [
   {
@@ -92,13 +92,14 @@ const images = [
 
 const testimages = [
   {
-    filename: "2018.1_DM.13156.jpg",
-    title: "Lot 043017 (Multiflora, Radiant Blue)",
-    artist: "Donald Moffett",
-    url: "https://bkm-next-search.vercel.app/collection/object/224276",
+    filename: "2021.45_PS11 (1).jpg",
+    title: "The Arm Wrestle of Chip & Spike; aka: Star-Makers",
+    artist: "Oscar yi Hou",
+    url: "https://bkm-next-search.vercel.app/collection/object/224994",
     imageUrl:
-      "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/2018.1_DM.13156.jpg",
+      "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/2021.45_PS11.jpg",
   },
+
 ]
 
 generateHtml(images, 8);

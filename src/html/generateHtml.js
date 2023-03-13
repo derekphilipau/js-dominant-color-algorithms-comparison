@@ -3,22 +3,24 @@ import { modifiedMedianCutQuantization } from "../mmcqColors.js";
 import { getMmcqKmeansColors } from "../mmcqKmeansColors.js";
 import { rgbQuantColors } from "../rgbQuant.js";
 import { getMmcqHierarchicalClustering } from "../mmcqHierarchicalColors.js";
-import { getKmeansSimpleColors } from "../kmeansSimple.js";
+import { getKmeansColors } from "../kmeansColors.js";
 import { getHierarchicalClustering } from "../hierarchicalColors.js";
 import { getMeanShiftClustering } from "../meanShiftColors.js";
 import { performance } from "perf_hooks";
 
 async function getPalettes(imageFile, numColors) {
   const functions = [
-    { name: "Hierarchical Clustering", func: getHierarchicalClustering, args: [] },
-    { name: "Mean Shift Clustering", func: getMeanShiftClustering, args: [] },
-    { name: "K-means Simple RGB no sampling", func: getKmeansSimpleColors, args: [1, false] },
-    { name: "K-means Simple HSV", func: getKmeansSimpleColors, args: [true] },
-    { name: "K-means Simple RGB sampled 1/2", func: getKmeansSimpleColors, args: [2, false] },
-    { name: "K-means Simple RGB sampled 1/4", func: getKmeansSimpleColors, args: [4, false] },
+    // { name: "Naive Hierarchical Clustering", func: getHierarchicalClustering, args: [] },
+    // { name: "Naive Mean Shift Clustering", func: getMeanShiftClustering, args: [] },
+    { name: "K-means RGB", func: getKmeansColors, args: [1, false] },
+    { name: "K-means RGB sampled 1/4", func: getKmeansColors, args: [2, false] },
+    { name: "K-means RGB sampled 1/16", func: getKmeansColors, args: [4, false] },
+    { name: "K-means RGB sampled 1/64", func: getKmeansColors, args: [8, false] },
+    { name: "K-means HSV", func: getKmeansColors, args: [1, true] },
+    { name: "K-means HSV sampled 1/16", func: getKmeansColors, args: [4, true] },
     { name: "MMCQ", func: modifiedMedianCutQuantization, args: [] },
-    { name: "Two steps: MMCQ then K-means", func: getMmcqKmeansColors, args: [] },
-    { name: "Two steps: MMCQ then Hierarchical Clustering", func: getMmcqHierarchicalClustering, args: [] },
+    { name: "2 step: MMCQ then K-means", func: getMmcqKmeansColors, args: [] },
+    { name: "2 step: MMCQ then Hierarchical Clustering", func: getMmcqHierarchicalClustering, args: [] },
     { name: "RGB Quant", func: rgbQuantColors, args: [] },
   ];
 
@@ -48,6 +50,7 @@ export async function generateHtml(images, numColors) {
   for (const image of images) {
     const imageFile = `./img/${image.filename}`;
 
+    console.log(`Processing colors for ${imageFile}`);
     const results = await getPalettes(imageFile, numColors);
 
     const imageHtml = `
