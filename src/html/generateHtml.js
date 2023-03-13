@@ -6,12 +6,13 @@ import { getMmcqHierarchicalClustering } from "../mmcqHierarchicalColors.js";
 import { getKmeansColors } from "../kmeansColors.js";
 import { getHierarchicalClustering } from "../hierarchicalColors.js";
 import { getMeanShiftClustering } from "../meanShiftColors.js";
+import { getVibrantDominantColors } from "../nodeVibrant.js";
 import { performance } from "perf_hooks";
 
 async function getPalettes(imageFile, numColors) {
   const functions = [
-    // { name: "Naive Hierarchical Clustering", func: getHierarchicalClustering, args: [] },
-    // { name: "Naive Mean Shift Clustering", func: getMeanShiftClustering, args: [] },
+    { name: "Naive Hierarchical Clustering", func: getHierarchicalClustering, args: [] },
+    { name: "Naive Mean Shift Clustering", func: getMeanShiftClustering, args: [] },
     { name: "K-means RGB", func: getKmeansColors, args: [1, false] },
     { name: "K-means RGB sampled 1/4", func: getKmeansColors, args: [2, false] },
     { name: "K-means RGB sampled 1/16", func: getKmeansColors, args: [4, false] },
@@ -37,6 +38,12 @@ async function getPalettes(imageFile, numColors) {
     results.push({ name: f.name, palettes, time });
     console.log(`${f.name} took ${getSeconds(time)}s`);
   }
+
+  const startTime = performance.now();
+  const vibrant = await getVibrantDominantColors(imageFile, numColors);
+  const endTime = performance.now();
+  const time = endTime - startTime;
+  results.push({ name: "Vibrant", palettes: [vibrant], time })
 
   return results;
 }
@@ -119,6 +126,7 @@ export async function generateHtml(images, numColors) {
               the <a href="https://github.com/lokesh/color-thief">Color Thief</a> library.)
               RGB Quant using <a href="https://github.com/leeoniya/RgbQuant.js">RgbQuant.js</a> with
               <a href="https://github.com/leeoniya/RgbQuant.js/compare/master...Hypfer:RgbQuant.js:patch-2">this patch</a>.
+              Vibrant using <a href="https://github.com/Vibrant-Colors/node-vibrant">node-vibrant</a>.
             </p>
           </div>
         </section>

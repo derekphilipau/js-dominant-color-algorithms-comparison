@@ -20,10 +20,12 @@
     "ml-matrix": "^6.10.4",
     "ndarray": "^1.0.19",
     "node-kmeans": "^1.1.9",
+    "node-vibrant": "^3.2.1-alpha.1",
     "perf_hooks": "^0.0.1",
     "quantize": "^1.0.2",
     "rgbquant": "^1.1.2",
     "save-pixels": "^2.3.6",
+    "sharp": "^0.31.3",
     "upng-js": "^2.1.0"
   }
 }
