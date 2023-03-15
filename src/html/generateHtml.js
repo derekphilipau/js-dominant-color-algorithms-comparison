@@ -1,9 +1,9 @@
 import { writeFileSync } from "fs";
 import { modifiedMedianCutQuantization } from "../mmcqColors.js";
 import { getMmcqKmeansColors } from "../mmcqKmeansColors.js";
-import { rgbQuantColors } from "../rgbQuant.js";
 import { getMmcqHierarchicalClustering } from "../mmcqHierarchicalColors.js";
 import { getKmeansColors } from "../kmeansColors.js";
+import { getKmeansNodeColors } from "../kmeansNodeColors.js";
 import { getHierarchicalClustering } from "../hierarchicalColors.js";
 import { getMeanShiftClustering } from "../meanShiftColors.js";
 import { getVibrantDominantColors } from "../nodeVibrant.js";
@@ -11,18 +11,50 @@ import { performance } from "perf_hooks";
 
 async function getPalettes(imageFile, numColors) {
   const functions = [
-    { name: "Naive Hierarchical Clustering", func: getHierarchicalClustering, args: [] },
-    { name: "Naive Mean Shift Clustering", func: getMeanShiftClustering, args: [] },
+    {
+      name: "Naive Hierarchical Clustering",
+      func: getHierarchicalClustering,
+      args: [],
+    },
+    {
+      name: "Naive Mean Shift Clustering",
+      func: getMeanShiftClustering,
+      args: [],
+    },
     { name: "K-means RGB", func: getKmeansColors, args: [1, false] },
-    { name: "K-means RGB sampled 1/4", func: getKmeansColors, args: [2, false] },
-    { name: "K-means RGB sampled 1/16", func: getKmeansColors, args: [4, false] },
-    { name: "K-means RGB sampled 1/64", func: getKmeansColors, args: [8, false] },
+    {
+      name: "K-means RGB sampled 1/4",
+      func: getKmeansColors,
+      args: [2, false],
+    },
+    {
+      name: "K-means RGB sampled 1/16",
+      func: getKmeansColors,
+      args: [4, false],
+    },
+    {
+      name: "K-means RGB sampled 1/64",
+      func: getKmeansColors,
+      args: [8, false],
+    },
     { name: "K-means HSV", func: getKmeansColors, args: [1, true] },
-    { name: "K-means HSV sampled 1/16", func: getKmeansColors, args: [4, true] },
+    {
+      name: "K-means HSV sampled 1/16",
+      func: getKmeansColors,
+      args: [4, true],
+    },
+    {
+      name: "K-means HSV sampled 1/16 (node-kmeans)",
+      func: getKmeansNodeColors,
+      args: [4, true],
+    },
     { name: "MMCQ", func: modifiedMedianCutQuantization, args: [] },
     { name: "2 step: MMCQ then K-means", func: getMmcqKmeansColors, args: [] },
-    { name: "2 step: MMCQ then Hierarchical Clustering", func: getMmcqHierarchicalClustering, args: [] },
-    { name: "RGB Quant", func: rgbQuantColors, args: [] },
+    {
+      name: "2 step: MMCQ then Hierarchical Clustering",
+      func: getMmcqHierarchicalClustering,
+      args: [],
+    },
   ];
 
   const results = [];
@@ -30,9 +62,9 @@ async function getPalettes(imageFile, numColors) {
     const startTime = performance.now();
     const palettes = [
       await f.func(imageFile, numColors, ...f.args),
-      await f.func(imageFile, numColors/2, ...f.args),
-      await f.func(imageFile, numColors/4, ...f.args),
-    ]
+      await f.func(imageFile, numColors / 2, ...f.args),
+      await f.func(imageFile, numColors / 4, ...f.args),
+    ];
     const endTime = performance.now();
     const time = endTime - startTime;
     results.push({ name: f.name, palettes, time });
@@ -43,7 +75,7 @@ async function getPalettes(imageFile, numColors) {
   const vibrant = await getVibrantDominantColors(imageFile, numColors);
   const endTime = performance.now();
   const time = endTime - startTime;
-  results.push({ name: "Vibrant", palettes: [vibrant], time })
+  results.push({ name: "Vibrant", palettes: [vibrant], time });
 
   return results;
 }
@@ -72,10 +104,12 @@ export async function generateHtml(images, numColors) {
         </div>
         <div class="column is-two-thirds">
           ${results
-        .map(
-          (result) =>
-            `<div class="pb-1">
-                <h4 class="mb-1 is-size-6">${result.name} (${getSeconds(result.time)}s)</h4>
+            .map(
+              (result) =>
+                `<div class="pb-1">
+                <h4 class="mb-1 is-size-6">${result.name} (${getSeconds(
+                  result.time
+                )}s)</h4>
                 <div class="is-flex">
                 ${result.palettes
                   .map(
@@ -92,8 +126,8 @@ export async function generateHtml(images, numColors) {
                   .join("\n")}
                 </div>
               </div>`
-        )
-        .join("\n")}
+            )
+            .join("\n")}
         </div>
       </div>
     `;
@@ -124,8 +158,6 @@ export async function generateHtml(images, numColors) {
               implemented in <a href="https://github.com/olivierlesnicki/quantize">quantize</a> Javascript package.
               (<a href="https://github.com/olivierlesnicki/quantize">quantize</a> is the code used in
               the <a href="https://github.com/lokesh/color-thief">Color Thief</a> library.)
-              RGB Quant using <a href="https://github.com/leeoniya/RgbQuant.js">RgbQuant.js</a> with
-              <a href="https://github.com/leeoniya/RgbQuant.js/compare/master...Hypfer:RgbQuant.js:patch-2">this patch</a>.
               Vibrant using <a href="https://github.com/Vibrant-Colors/node-vibrant">node-vibrant</a>.
             </p>
           </div>
