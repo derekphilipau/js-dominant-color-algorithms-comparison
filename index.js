@@ -92,14 +92,13 @@ const images = [
 
 const testimages = [
   {
-    filename: "2021.45_PS11 (1).jpg",
-    title: "The Arm Wrestle of Chip & Spike; aka: Star-Makers",
-    artist: "Oscar yi Hou",
-    url: "https://bkm-next-search.vercel.app/collection/object/224994",
+    filename: "CUR.2012.73a-b_Lehman_Maupin_photo_LM15960.jpg",
+    title: "Monet's Salle a Manger Jaune",
+    artist: "Mickalene Thomas",
+    url: "https://bkm-next-search.vercel.app/collection/object/209424",
     imageUrl:
-      "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/2021.45_PS11.jpg",
+      "https://d1lfxha3ugu3d4.cloudfront.net/images/opencollection/objects/size4/CUR.2012.73a-b_Lehman_Maupin_photo_LM15960.jpg",
   },
-
-]
+];
 
 generateHtml(images, 8);

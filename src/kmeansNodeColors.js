@@ -3,17 +3,37 @@ import { getKmeansNode } from "./clustering/kmeansNode.js";
 import hsvDistance from "./distance/hsvDistance.js";
 import convert from "color-convert";
 
-export async function getKmeansNodeColors(imageUrlOrPath, numColors, skipRatio = 1, isHsv = false) {
+export async function getKmeansNodeColors(
+  imageUrlOrPath,
+  numColors,
+  skipRatio = 1,
+  isHsv = false
+) {
   const pixels = await getPixelsAsync(imageUrlOrPath);
   const dataArray = getFlatPixelArray(pixels, skipRatio, isHsv);
 
-  if (isHsv) {
-    const clusters = await getKmeansNode(dataArray, numColors, hsvDistance);
-    return clusters.map(cluster => cluster.centroid)
-      .map((color) => convert.hsv.hex(color[0], color[1], color[2]));
-  }
+  const clusters = isHsv
+    ? await getKmeansNode(dataArray, numColors, hsvDistance)
+    : await getKmeansNode(dataArray, numColors);
+  const totalLength = clusters.reduce(
+    (acc, cluster) => acc + cluster.cluster.length,
+    0
+  );
 
-  const clusters = await getKmeansNode(dataArray, numColors);
-  return clusters.map(cluster => cluster.centroid)
-    .map((color) => convert.rgb.hex(color[0], color[1], color[2]));
+  return clusters.map((cluster) => {
+    return {
+      color: isHsv
+        ? convert.hsv.hex(
+            cluster.centroid[0],
+            cluster.centroid[1],
+            cluster.centroid[2]
+          )
+        : convert.rgb.hex(
+            cluster.centroid[0],
+            cluster.centroid[1],
+            cluster.centroid[2]
+          ),
+      percent: cluster.cluster.length / totalLength,
+    };
+  });
 }

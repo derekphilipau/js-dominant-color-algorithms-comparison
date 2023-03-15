@@ -2,7 +2,6 @@ import { writeFileSync } from "fs";
 import { modifiedMedianCutQuantization } from "../mmcqColors.js";
 import { getMmcqKmeansColors } from "../mmcqKmeansColors.js";
 import { getMmcqHierarchicalClustering } from "../mmcqHierarchicalColors.js";
-import { getKmeansColors } from "../kmeansColors.js";
 import { getKmeansNodeColors } from "../kmeansNodeColors.js";
 import { getHierarchicalClustering } from "../hierarchicalColors.js";
 import { getMeanShiftClustering } from "../meanShiftColors.js";
@@ -21,27 +20,25 @@ async function getPalettes(imageFile, numColors) {
       func: getMeanShiftClustering,
       args: [],
     },
-    { name: "K-means RGB", func: getKmeansColors, args: [1, false] },
     {
-      name: "K-means RGB sampled 1/4",
-      func: getKmeansColors,
+      name: "K-means RGB (node-kmeans)",
+      func: getKmeansNodeColors,
+      args: [1, false],
+    },
+    {
+      name: "K-means RGB sampled 1/4 (node-kmeans)",
+      func: getKmeansNodeColors,
       args: [2, false],
     },
     {
-      name: "K-means RGB sampled 1/16",
-      func: getKmeansColors,
+      name: "K-means RGB sampled 1/16 (node-kmeans)",
+      func: getKmeansNodeColors,
       args: [4, false],
     },
     {
-      name: "K-means RGB sampled 1/64",
-      func: getKmeansColors,
+      name: "K-means RGB sampled 1/64 (node-kmeans)",
+      func: getKmeansNodeColors,
       args: [8, false],
-    },
-    { name: "K-means HSV", func: getKmeansColors, args: [1, true] },
-    {
-      name: "K-means HSV sampled 1/16",
-      func: getKmeansColors,
-      args: [4, true],
     },
     {
       name: "K-means HSV sampled 1/16 (node-kmeans)",
@@ -84,6 +81,36 @@ function getSeconds(ms) {
   return Math.round((ms / 1000) * 100) / 100;
 }
 
+function getPalette(palette) {
+  if (palette.length > 0 && palette[0].percent) {
+    // palette has percent info
+    const totalLength = 30 * palette.length;
+    return `
+    <div class="is-flex mr-6">
+    ${palette
+      .map(
+        (color) =>
+          `<div style="background-color: #${
+            color.color
+          }; height: 60px; width: ${Math.floor(
+            color.percent * totalLength
+          )}px;"></div>`
+      )
+      .join("\n")}
+    </div>`;
+  }
+
+  return `
+    <div class="is-flex mr-6">
+    ${palette
+      .map(
+        (color) =>
+          `<div style="background-color: #${color}; height: 60px; width: 30px;"></div>`
+      )
+      .join("\n")}
+    </div>`;
+}
+
 export async function generateHtml(images, numColors) {
   const imageDivs = [];
   for (const image of images) {
@@ -115,12 +142,7 @@ export async function generateHtml(images, numColors) {
                   .map(
                     (palette) =>
                       `<div class="is-flex mr-6">
-                      ${palette
-                        .map(
-                          (color) =>
-                            `<div style="background-color: #${color}; height: 60px; width: 30px;"></div>`
-                        )
-                        .join("\n")}
+                      ${getPalette(palette)}
                       </div>`
                   )
                   .join("\n")}
