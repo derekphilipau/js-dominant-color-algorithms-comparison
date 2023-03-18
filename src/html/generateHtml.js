@@ -131,7 +131,7 @@ export async function generateHtml(images, numColors) {
           <figure class="image">
             <img src="img/${image.filename}">
             <figcaption>
-              <a href="image.url">"${image.title}", ${image.artist}</a>
+              <a href="${image.url}">"${image.title}", ${image.artist}</a>
             </figcaption>
           </figure>
         </div>
