@@ -23,27 +23,32 @@ async function getPalettes(imageFile, numColors) {
     {
       name: "K-means RGB (node-kmeans)",
       func: getKmeansNodeColors,
-      args: [1, false],
+      args: [1, 'rgb'],
     },
     {
       name: "K-means RGB sampled 1/4 (node-kmeans)",
       func: getKmeansNodeColors,
-      args: [2, false],
+      args: [2, 'rgb'],
     },
     {
       name: "K-means RGB sampled 1/16 (node-kmeans)",
       func: getKmeansNodeColors,
-      args: [4, false],
+      args: [4, 'rgb'],
     },
     {
       name: "K-means RGB sampled 1/64 (node-kmeans)",
       func: getKmeansNodeColors,
-      args: [8, false],
+      args: [8, 'rgb'],
     },
     {
       name: "K-means HSV sampled 1/16 (node-kmeans)",
       func: getKmeansNodeColors,
-      args: [4, true],
+      args: [4, 'hsv'],
+    },
+    {
+      name: "K-means Lab sampled 1/16 (node-kmeans)",
+      func: getKmeansNodeColors,
+      args: [4, 'lab'],
     },
     { name: "MMCQ", func: modifiedMedianCutQuantization, args: [] },
     { name: "2 step: MMCQ then K-means", func: getMmcqKmeansColors, args: [] },
@@ -57,13 +62,14 @@ async function getPalettes(imageFile, numColors) {
   const results = [];
   for (const f of functions) {
     const startTime = performance.now();
+    const fullPalette = await f.func(imageFile, numColors, ...f.args);
+    const endTime = performance.now();
+    const time = endTime - startTime;
     const palettes = [
-      await f.func(imageFile, numColors, ...f.args),
+      fullPalette,
       await f.func(imageFile, numColors / 2, ...f.args),
       await f.func(imageFile, numColors / 4, ...f.args),
     ];
-    const endTime = performance.now();
-    const time = endTime - startTime;
     results.push({ name: f.name, palettes, time });
     console.log(`${f.name} took ${getSeconds(time)}s`);
   }
@@ -174,13 +180,23 @@ export async function generateHtml(images, numColors) {
               <a href="https://github.com/derekphilipau/dominant-color-algorithms">View on Github</a>
             </p>
             <p class="content">
-              K-means clustering using the <a href="">ml-kmeans</a> library.
+              This is just a playground for testing out different algorithms for extracting
+              dominant colors from images.  I've tried various techniques for improving optimization,
+              including downsampling, shifting certain color space channels, and eliminating Lab
+              luminance altogether.  Difficult to beat the speed of the MMCQ algorithm, though.
+            </p>
+            <p class="content">
+              K-means clustering using the <a href="https://github.com/mljs/kmeans">ml-kmeans</a> and
+              <a href="https://github.com/Philmod/node-kmeans">node-kmeans</a> libraries.
               MMCQ (modified median cut quantization) algorithm from
-              <a href="http://www.leptonica.org/color-quantization.html">Leptonica library</a>
-              implemented in <a href="https://github.com/olivierlesnicki/quantize">quantize</a> Javascript package.
+              <a href="http://www.leptonica.org/color-quantization.html">Leptonica library</a> in
+              <a href="https://github.com/DanBloomberg/leptonica/blob/master/src/colorquant2.c">colorquant2.c</a>,
+              later implemented in the <a href="https://github.com/olivierlesnicki/quantize">quantize</a> Javascript package.
               (<a href="https://github.com/olivierlesnicki/quantize">quantize</a> is the code used in
               the <a href="https://github.com/lokesh/color-thief">Color Thief</a> library.)
-              Vibrant using <a href="https://github.com/Vibrant-Colors/node-vibrant">node-vibrant</a>.
+              <a href="https://github.com/Vibrant-Colors/node-vibrant">node-vibrant</a> also uses MMCQ.
+              Huge shoutout to the original author of MMCQ as implemented in Leptonica,
+              <a href="https://github.com/DanBloomberg">Dan Bloomberg</a>.
             </p>
           </div>
         </section>

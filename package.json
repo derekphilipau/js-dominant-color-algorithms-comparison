@@ -16,7 +16,7 @@
     "kmeans-js": "^0.1.2",
     "ml-kmeans": "^6.0.0",
     "ndarray": "^1.0.19",
-    "node-kmeans": "^1.1.9",
+    "node-kmeans": "github:Philmod/node-kmeans#master",
     "node-vibrant": "^3.2.1-alpha.1",
     "perf_hooks": "^0.0.1",
     "quantize": "^1.0.2",

@@ -1,3 +1,4 @@
+// npx ts-node src/index.ts
 import { generateHtml } from "./src/html/generateHtml.js";
 
 const images = [
