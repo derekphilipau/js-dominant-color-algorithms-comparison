@@ -3,6 +3,7 @@ import { modifiedMedianCutQuantization } from "../mmcqColors.js";
 import { getMmcqKmeansColors } from "../mmcqKmeansColors.js";
 import { getMmcqHierarchicalClustering } from "../mmcqHierarchicalColors.js";
 import { getKmeansNodeColors } from "../kmeansNodeColors.js";
+import dominantColors from "node-kmeans-dominant-colors/src/dominantColors.js";
 import { getHierarchicalClustering } from "../hierarchicalColors.js";
 import { getMeanShiftClustering } from "../meanShiftColors.js";
 import { getVibrantDominantColors } from "../nodeVibrant.js";
@@ -57,6 +58,11 @@ async function getPalettes(imageFile, numColors) {
       func: getMmcqHierarchicalClustering,
       args: [],
     },
+    {
+      name: "My implementation with node-kmeans",
+      func: dominantColors,
+      args: [],
+    },
   ];
 
   const results = [];
@@ -97,7 +103,7 @@ function getPalette(palette) {
       .map(
         (color) =>
           `<div style="background-color: #${
-            color.color
+            color.color || color.hex
           }; height: 60px; width: ${Math.floor(
             color.percent * totalLength
           )}px;"></div>`
